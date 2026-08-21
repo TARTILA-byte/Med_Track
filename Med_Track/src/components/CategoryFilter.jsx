@@ -1,23 +1,14 @@
 import React from "react";
 
-const CategoryFilter = ({ category, setCategory }) => {
+const CategoryFilter = () => {
   return (
-    <select
-      className="category-select"
-      value={category}
-      onChange={(e) => setCategory(e.target.value)}
-    >
-      <option value="All">All Categories</option>
-
-      <option value="Painkiller">Painkiller</option>
-
-      <option value="Antibiotic">Antibiotic</option>
-
-      <option value="Gastric">Gastric</option>
-
-      <option value="Vitamin">Vitamin</option>
-
-      <option value="Allergy">Allergy</option>
+    <select className="category-select">
+      <option>All Categories</option>
+      <option>Painkiller</option>
+      <option>Antibiotic</option>
+      <option>Gastric</option>
+      <option>Vitamin</option>
+      <option>Allergy</option>
     </select>
   );
 };

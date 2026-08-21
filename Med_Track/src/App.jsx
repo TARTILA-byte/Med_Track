@@ -5,27 +5,25 @@ import Navbar from "./components/Navbar";
 
 import Home from "./pages/Home";
 import AllMedicines from "./pages/AllMedicines";
-import AddMedicine from "./pages/AddMedicine";
 import MyMedicines from "./pages/MyMedicines";
+import AddMedicine from "./pages/AddMedicine";
 
-import { MedicineProvider } from "./context/MedicineContext";
+import "./App.css";
 
 function App() {
   return (
     <BrowserRouter>
-      <MedicineProvider>
-        <Navbar />
+      <Navbar />
 
-        <Routes>
-          <Route path="/" element={<Home />} />
+      <Routes>
+        <Route path="/" element={<Home />} />
 
-          <Route path="/all-medicines" element={<AllMedicines />} />
+        <Route path="/all-medicines" element={<AllMedicines />} />
 
-          <Route path="/add-medicine" element={<AddMedicine />} />
+        <Route path="/my-medicines" element={<MyMedicines />} />
 
-          <Route path="/my-medicines" element={<MyMedicines />} />
-        </Routes>
-      </MedicineProvider>
+        <Route path="/add-medicine" element={<AddMedicine />} />
+      </Routes>
     </BrowserRouter>
   );
 }
