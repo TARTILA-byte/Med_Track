@@ -1,21 +1,10 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React from "react";
 
 import MedicineCard from "../components/MedicineCard";
 import SearchBar from "../components/SearchBar";
 import CategoryFilter from "../components/CategoryFilter";
 
 const AllMedicines = () => {
-  // Navigation
-  const navigate = useNavigate();
-
-  // Search
-  const [search, setSearch] = useState("");
-
-  // Category
-  const [category, setCategory] = useState("All");
-
-  // Medicine List
   const medicines = [
     {
       id: 1,
@@ -51,29 +40,14 @@ const AllMedicines = () => {
       genericName: "Ascorbic Acid",
       category: "Vitamin",
     },
+
+    {
+      id: 6,
+      name: "Azithromycin",
+      genericName: "Azithromycin",
+      category: "Antibiotic",
+    },
   ];
-
-  // Search + Category Filter
-
-  const filteredMedicines = medicines.filter((medicine) => {
-    const matchSearch = medicine.name
-      .toLowerCase()
-      .includes(search.toLowerCase());
-
-    const matchCategory = category === "All" || medicine.category === category;
-
-    return matchSearch && matchCategory;
-  });
-
-  // Add Button
-
-  const handleAdd = (medicine) => {
-    navigate("/add-medicine", {
-      state: {
-        medicine: medicine,
-      },
-    });
-  };
 
   return (
     <div className="page">
@@ -83,28 +57,16 @@ const AllMedicines = () => {
         <p>Search for a medicine and add it to your personal medicine list.</p>
       </div>
 
-      {/* Search + Filter */}
-
       <div className="filter-area">
-        <SearchBar search={search} setSearch={setSearch} />
+        <SearchBar />
 
-        <CategoryFilter category={category} setCategory={setCategory} />
+        <CategoryFilter />
       </div>
 
-      {/* Medicine Cards */}
-
       <div className="medicine-grid">
-        {filteredMedicines.length > 0 ? (
-          filteredMedicines.map((medicine) => (
-            <MedicineCard
-              key={medicine.id}
-              medicine={medicine}
-              onAdd={handleAdd}
-            />
-          ))
-        ) : (
-          <div className="no-result">No medicine found.</div>
-        )}
+        {medicines.map((medicine) => (
+          <MedicineCard key={medicine.id} medicine={medicine} />
+        ))}
       </div>
     </div>
   );

@@ -1,6 +1,6 @@
 import React from "react";
 
-const MedicineCard = ({ medicine, onAdd }) => {
+const MedicineCard = ({ medicine }) => {
   return (
     <div className="medicine-card">
       <div className="medicine-icon">💊</div>
@@ -15,9 +15,7 @@ const MedicineCard = ({ medicine, onAdd }) => {
         <strong>Category:</strong> {medicine.category}
       </p>
 
-      <button className="green-button" onClick={() => onAdd(medicine)}>
-        + Add to My Medicines
-      </button>
+      <button className="green-button">+ Add to My Medicines</button>
     </div>
   );
 };
