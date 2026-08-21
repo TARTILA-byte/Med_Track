@@ -9,9 +9,7 @@ import Home from "./pages/Home";
 import AllMedicines from "./pages/AllMedicines";
 import MyMedicines from "./pages/MyMedicines";
 import AddMedicine from "./pages/AddMedicine";
-import MyMedicines from "./pages/MyMedicines";
 
-import { MedicineProvider } from "./context/MedicineContext";
 
 function App() {
   return (
