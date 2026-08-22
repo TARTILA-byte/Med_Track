@@ -1,0 +1,94 @@
+
+.dashboard-container {
+  padding: 30px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.dashboard-title {
+  font-size: 30px;
+  color: black;
+  margin: 0;
+}
+
+.notification-btn {
+  background-color: green ;
+  color: white;
+  border: none;
+  padding:  18px;
+  border-radius: 6px;
+  font-size: 24px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.notification-btn:hover {
+  background-color: rgb(1, 104, 1) ;
+}
+
+.schedule-card {
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.schedule-title {
+  margin-top: 0;
+  font-size: 24px;
+  color: black ;
+}
+
+.schedule-table {
+  font-size: 20px;
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+}
+
+.schedule-table th {
+  padding: 10px;
+  border-bottom: 2px solid #eee;
+  text-align: left;
+}
+
+.schedule-table td {
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+.med-name {
+  font-weight: bold;
+  font-size: 17px;
+}
+
+.med-info {
+  font-size: 16px;
+  color: #555;
+}
+
+
+.status-badge {
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.status-badge.active {
+  color: #065f46;
+  background-color: #d1fae5;
+}
+
+.status-badge.completed {
+  color: #374151;
+  background-color: #e5e7eb;
+}
