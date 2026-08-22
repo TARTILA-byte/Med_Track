@@ -1,0 +1,16 @@
+.category-select {
+  padding: 14px 18px;
+
+  min-width: 200px;
+
+  border: 1px solid #ddd;
+  border-radius: 8px;
+
+  background: white;
+  font-size: 15px;
+  outline: none;
+}
+
+.category-select:focus {
+  border-color: #20c96b;
+}

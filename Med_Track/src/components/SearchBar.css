@@ -1,0 +1,22 @@
+.search-input {
+  width: 450px;
+  padding: 14px;
+
+  border: 1px solid #ddd;
+  border-radius: 8px;
+
+  background: white;
+  font-size: 15px;
+}
+
+.search-input:focus {
+  border-color: green;
+}
+
+/* Responsive */
+
+@media (max-width: 600px) {
+  .search-input {
+    width: 100%;
+  }
+}

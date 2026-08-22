@@ -1,0 +1,19 @@
+.my-medicine-list {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.my-medicine-card {
+  background: white;
+  border-radius: 15px;
+  padding: 30px;
+
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.06);
+}
+
+.medicine-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 25px;
+}

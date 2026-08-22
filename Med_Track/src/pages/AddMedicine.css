@@ -1,0 +1,77 @@
+.form-container {
+  max-width: 700px;
+  margin: 0 auto;
+
+  background: white;
+
+  padding: 40px;
+
+  border-radius: 15px;
+
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.06);
+}
+
+.form-container h1 {
+  margin: 0 0 8px;
+  font-size: 32px;
+}
+
+.form-subtitle {
+  color: #777;
+  margin-bottom: 30px;
+}
+
+.medicine-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.medicine-form label {
+  margin-bottom: 8px;
+  margin-top: 18px;
+
+  font-weight: 600;
+}
+
+.medicine-form input,
+.medicine-form select {
+  padding: 13px 15px;
+
+  border: 1px solid #ddd;
+  border-radius: 8px;
+
+  font-size: 15px;
+
+  outline: none;
+  background: white;
+}
+
+.medicine-form input:focus,
+.medicine-form select:focus {
+  border-color: #20c96b;
+}
+
+.save-button {
+  margin-top: 30px;
+
+  padding: 14px;
+
+  border: none;
+  border-radius: 8px;
+
+  background: #16a85a;
+  color: white;
+
+  font-size: 16px;
+  font-weight: bold;
+
+  cursor: pointer;
+}
+
+/* Responsive */
+
+@media (max-width: 600px) {
+  .form-container {
+    padding: 25px;
+  }
+}

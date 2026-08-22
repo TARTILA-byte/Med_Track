@@ -1,10 +1,10 @@
 import React from "react";
-
+import "./AllMedicines.css";
 import MedicineCard from "../components/MedicineCard";
 import SearchBar from "../components/SearchBar";
 import CategoryFilter from "../components/CategoryFilter";
 
-const AllMedicines = () => {
+function AllMedicines() {
   const medicines = [
     {
       id: 1,
@@ -70,6 +70,6 @@ const AllMedicines = () => {
       </div>
     </div>
   );
-};
+}
 
 export default AllMedicines;
