@@ -632,3 +632,77 @@ body {
     font-size: 35px;
   }
 }
+/* Purano Header/Navbar hide korar jonno & Screen Middle-e anar jonno */
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f5f5f5;
+}
+
+/* Card Design */
+.login-card {
+  background: #ffffff;
+  padding: 40px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  width: 100%;
+  max-width: 380px;
+}
+
+.login-logo {
+  font-size: 28px;
+  font-weight: bold;
+  color: #10b981; /* Green color */
+  margin-bottom: 10px;
+}
+
+.login-logo span {
+  color: #000000;
+}
+
+.login-card h2 {
+  font-size: 20px;
+  margin-bottom: 25px;
+  color: #333;
+}
+
+/* Form layout */
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px; /* Input & Button-er mājhe gap */
+}
+
+.login-input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+  outline: none;
+  box-sizing: border-box;
+}
+
+.login-input:focus {
+  border-color: #10b981;
+}
+
+.login-button {
+  width: 100%;
+  padding: 12px;
+  background-color: #000000;
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.login-button:hover {
+  background-color: #333333;
+}
