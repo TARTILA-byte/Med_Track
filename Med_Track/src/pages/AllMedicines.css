@@ -1,6 +1,6 @@
 .page {
-  min-height: calc(100vh - 75px);
-  padding: 50px 70px;
+  min-height: calc(800px- 75px);
+  padding: 70px;
 }
 
 .page-header {
@@ -28,30 +28,4 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 25px;
-}
-
-/* Responsive */
-
-@media (max-width: 900px) {
-  .page {
-    padding: 40px 30px;
-  }
-
-  .medicine-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 600px) {
-  .page {
-    padding: 30px 20px;
-  }
-
-  .filter-area {
-    flex-direction: column;
-  }
-
-  .medicine-grid {
-    grid-template-columns: 1fr;
-  }
 }

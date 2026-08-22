@@ -1,6 +1,6 @@
 import React from "react";
 import "./SearchBar.css";
-const SearchBar = () => {
+function SearchBar() {
   return (
     <input
       type="text"
@@ -8,6 +8,6 @@ const SearchBar = () => {
       placeholder="Search medicine..."
     />
   );
-};
+}
 
 export default SearchBar;
