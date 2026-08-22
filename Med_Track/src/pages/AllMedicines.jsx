@@ -1,5 +1,5 @@
 import React from "react";
-
+import "./AllMedicines.css";
 import MedicineCard from "../components/MedicineCard";
 import SearchBar from "../components/SearchBar";
 import CategoryFilter from "../components/CategoryFilter";

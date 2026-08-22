@@ -1,5 +1,5 @@
 import React from "react";
-
+import "./MedicineCard.css";
 const MedicineCard = ({ medicine }) => {
   return (
     <div className="medicine-card">

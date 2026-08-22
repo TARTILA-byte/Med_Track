@@ -1,0 +1,114 @@
+.my-medicine-list {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.my-medicine-card {
+  background: white;
+  border-radius: 15px;
+  padding: 30px;
+
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.06);
+}
+
+.card-top {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 25px;
+}
+
+.medicine-badge {
+  display: inline-block;
+
+  background: #e8f8ee;
+  color: #159653;
+
+  padding: 6px 12px;
+
+  border-radius: 20px;
+
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.card-top h2 {
+  margin: 12px 0 0;
+  font-size: 23px;
+}
+
+.medicine-info {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+}
+
+.medicine-info p {
+  background: #f7f9f8;
+  padding: 15px;
+  border-radius: 8px;
+  margin: 0;
+}
+
+.medicine-info strong {
+  display: block;
+
+  font-size: 13px;
+  color: #777;
+
+  margin-bottom: 6px;
+}
+
+.medicine-info span {
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.medicine-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 25px;
+}
+
+.medicine-actions button {
+  padding: 11px 20px;
+
+  border-radius: 7px;
+  border: none;
+
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.taken-button {
+  background: #dff7e8;
+  color: #128447;
+}
+
+.missed-button {
+  background: #ffe5e5;
+  color: #d33;
+}
+
+.delete-button {
+  background: #111;
+  color: white;
+}
+
+/* Responsive */
+
+@media (max-width: 900px) {
+  .medicine-info {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .medicine-info {
+    grid-template-columns: 1fr;
+  }
+
+  .medicine-actions {
+    flex-direction: column;
+  }
+}

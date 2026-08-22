@@ -1,5 +1,5 @@
 import React from "react";
-
+import "./MyMedicines.css";
 const MyMedicines = () => {
   const myMedicines = [
     {
