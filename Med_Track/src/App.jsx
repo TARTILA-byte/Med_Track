@@ -1,31 +1,40 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Outlet } from "react-router-dom";
 import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from './assets/vite.svg'
 import heroImg from './assets/hero.png'
 import './App.css'
+import Login from "./pages/Login";
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
 import AllMedicines from "./pages/AllMedicines";
 import MyMedicines from "./pages/MyMedicines";
 import AddMedicine from "./pages/AddMedicine";
 
+const MainLayout = () => {
+  return (
+    <>
+      <Navbar />
+      <Outlet /> 
+    </>
+  );
+};
 
 function App() {
   return (
-    <BrowserRouter>
+   <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Login />} />
+        
+        <Route element={<MainLayout />}>
+          
+          <Route path="/home" element={<Home />} />
       
-        <Navbar />
-
-        <Routes>
-          <Route path="/" element={<Home />} />
-
-        <Route path="/all-medicines" element={<AllMedicines />} />
-
-        <Route path="/my-medicines" element={<MyMedicines />} />
-
-        <Route path="/add-medicine" element={<AddMedicine />} />
-      </Routes>
+          <Route path="/all-medicines" element={<AllMedicines />} />
+          <Route path="/my-medicines" element={<MyMedicines />} />
+          <Route path="/add-medicine" element={<AddMedicine />} />
+         </Route> 
+        </Routes>
     </BrowserRouter>
   );
 }
