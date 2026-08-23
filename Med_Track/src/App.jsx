@@ -1,9 +1,5 @@
 import { BrowserRouter, Routes, Route, Outlet } from "react-router-dom";
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "./assets/vite.svg";
-import heroImg from "./assets/hero.png";
-import "./App.css";
+// import "./App.css";
 import Login from "./pages/Login";
 import Navbar from "./components/Navbar";
 import Dashboard from "./pages/Dashboard";
@@ -12,14 +8,14 @@ import AllMedicines from "./pages/AllMedicines";
 import MyMedicines from "./pages/MyMedicines";
 import AddMedicine from "./pages/AddMedicine";
 
-const MainLayout = () => {
+function MainLayout() {
   return (
     <>
       <Navbar />
       <Outlet />
     </>
   );
-};
+}
 
 function App() {
   return (
