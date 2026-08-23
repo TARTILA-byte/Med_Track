@@ -13,8 +13,6 @@
   border-color: green;
 }
 
-/* Responsive */
-
 @media (max-width: 600px) {
   .search-input {
     width: 100%;
