@@ -11,9 +11,13 @@
 
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.06);
 }
+@media (max-width: 768px) {
+  .my-medicine-list {
+    gap: 15px;
+  }
 
-.medicine-actions {
-  display: flex;
-  gap: 12px;
-  margin-top: 25px;
+  .my-medicine-card {
+    padding: 20px;
+    border-radius: 12px;
+  }
 }
