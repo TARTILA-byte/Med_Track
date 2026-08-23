@@ -10,7 +10,6 @@ function Navbar() {
       </div>
 
       <div className="nav-links">
-        <Link to="/home">Home</Link>
         <Link to="/dashboard">Dashboard</Link>
         <Link to="/all-medicines">All Medicines</Link>
         {/* <Link to="/add-medicine">Add Medicines</Link> */}

@@ -7,7 +7,7 @@ const Login = () => {
 
   const handleLogin = (e) => {
     e.preventDefault();
-    navigate("/home"); 
+    navigate("/all-medicines");
   };
 
   return (
