@@ -1,10 +1,11 @@
 import { BrowserRouter, Routes, Route, Outlet } from "react-router-dom";
-// import "./App.css";
+//import "./App.css";
 import Login from "./pages/Login";
 import Navbar from "./components/Navbar";
 import Dashboard from "./pages/Dashboard";
 import Notifications from "./pages/Notifications";
 import AllMedicines from "./pages/AllMedicines";
+import DoseHistory from "./pages/DoseHistory";
 import MyMedicines from "./pages/MyMedicines";
 import AddMedicine from "./pages/AddMedicine";
 
@@ -29,6 +30,7 @@ function App() {
           <Route path="/all-medicines" element={<AllMedicines />} />
           <Route path="/my-medicines" element={<MyMedicines />} />
           <Route path="/add-medicine" element={<AddMedicine />} />
+          <Route path="/dose-history" element={<DoseHistory />} />
         </Route>
       </Routes>
     </BrowserRouter>
