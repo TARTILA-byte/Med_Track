@@ -1,5 +1,5 @@
-import React from "react";
-import "./Notifications.css"; // CSS ফাইলটি ইম্পোর্ট করা হয়েছে
+import React from "react"; 
+import "./Notifications.css";  
 
 const Notifications = () => {
   const notifications = [
