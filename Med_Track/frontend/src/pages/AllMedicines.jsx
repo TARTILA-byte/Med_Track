@@ -1,53 +1,34 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./AllMedicines.css";
 import MedicineCard from "../components/MedicineCard";
 import SearchBar from "../components/SearchBar";
 // import CategoryFilter from "../components/CategoryFilter";
 
 function AllMedicines() {
-  const medicines = [
-    {
-      id: 1,
-      name: "Napa 500mg",
-      genericName: "Paracetamol",
-      category: "Painkiller",
-    },
+  const [medicines, setMedicines] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
 
-    {
-      id: 2,
-      name: "Seclo 20mg",
-      genericName: "Omeprazole",
-      category: "Gastric",
-    },
+  // Get medicines from backend API
+  useEffect(() => {
+    fetch("http://localhost:4000/api/medicines")
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Failed to fetch medicines");
+        }
 
-    {
-      id: 3,
-      name: "Napa Extra",
-      genericName: "Paracetamol + Caffeine",
-      category: "Painkiller",
-    },
-
-    {
-      id: 4,
-      name: "Fexo 120mg",
-      genericName: "Fexofenadine",
-      category: "Allergy",
-    },
-
-    {
-      id: 5,
-      name: "Vitamin C",
-      genericName: "Ascorbic Acid",
-      category: "Vitamin",
-    },
-
-    {
-      id: 6,
-      name: "Azithromycin",
-      genericName: "Azithromycin",
-      category: "Antibiotic",
-    },
-  ];
+        return response.json();
+      })
+      .then((data) => {
+        setMedicines(data);
+        setLoading(false);
+      })
+      .catch((error) => {
+        console.error("Error fetching medicines:", error);
+        setError("Failed to load medicines.");
+        setLoading(false);
+      });
+  }, []);
 
   return (
     <div className="page">
@@ -63,11 +44,17 @@ function AllMedicines() {
         {/* <CategoryFilter /> */}
       </div>
 
-      <div className="medicine-grid">
-        {medicines.map((medicine) => (
-          <MedicineCard key={medicine.id} medicine={medicine} />
-        ))}
-      </div>
+      {loading && <p>Loading medicines...</p>}
+
+      {error && <p>{error}</p>}
+
+      {!loading && !error && (
+        <div className="medicine-grid">
+          {medicines.map((medicine) => (
+            <MedicineCard key={medicine._id} medicine={medicine} />
+          ))}
+        </div>
+      )}
     </div>
   );
 }

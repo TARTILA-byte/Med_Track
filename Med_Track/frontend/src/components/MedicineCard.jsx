@@ -1,13 +1,20 @@
 import React from "react";
 import "./MedicineCard.css";
+
 function MedicineCard({ medicine }) {
   return (
     <div className="medicine-card">
       <h3>{medicine.name}</h3>
-      <h4>{medicine.genericName}</h4>
-      {<h4>{medicine.category}</h4>}
 
-      <div className="green-button">+ Add to My Medicines</div>
+      <p>Category: {medicine.category}</p>
+
+      <p>Dosage: {medicine.dosage}</p>
+
+      <p>Frequency: {medicine.frequency}</p>
+
+      <p>Food: {medicine.beforeAfterFood}</p>
+
+      <button className="green-button">+ Add to My Medicines</button>
     </div>
   );
 }

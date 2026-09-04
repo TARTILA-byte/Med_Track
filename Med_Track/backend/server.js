@@ -2,6 +2,7 @@ import express from "express";
 import { users, addUser } from "./data.js";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
+import cors from "cors";
 import Medicine from "./models/Medicine.js";
 
 dotenv.config();
@@ -10,8 +11,8 @@ const app = express();
 
 const PORT = 4000;
 
+app.use(cors());
 app.use(express.json());
-
 // MongoDB Connection
 mongoose
   .connect(process.env.MONGO_URI)
@@ -52,8 +53,11 @@ app.get("/api/medicines", async (req, res) => {
 
     res.status(200).json(medicines);
   } catch (error) {
+    console.log("GET MEDICINES ERROR:", error);
+
     res.status(500).json({
       message: "Failed to get medicines",
+      error: error.message,
     });
   }
 });

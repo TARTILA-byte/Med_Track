@@ -1,0 +1,387 @@
+[
+  {
+    "name": "Napa",
+    "category": "Painkiller",
+    "dosage": "500mg",
+    "frequency": "As directed",
+    "beforeAfterFood": "After Food"
+  },
+  {
+    "name": "Napa Extra",
+    "category": "Painkiller",
+    "dosage": "500mg + 65mg",
+    "frequency": "As directed",
+    "beforeAfterFood": "After Food"
+  },
+  {
+    "name": "Napa Extend",
+    "category": "Painkiller",
+    "dosage": "665mg",
+    "frequency": "As directed",
+    "beforeAfterFood": "After Food"
+  },
+  {
+    "name": "Ace",
+    "category": "Painkiller",
+    "dosage": "500mg",
+    "frequency": "As directed",
+    "beforeAfterFood": "After Food"
+  },
+  {
+    "name": "Ace Plus",
+    "category": "Painkiller",
+    "dosage": "500mg + 65mg",
+    "frequency": "As directed",
+    "beforeAfterFood": "After Food"
+  },
+  {
+    "name": "DP",
+    "category": "Painkiller",
+    "dosage": "500mg",
+    "frequency": "As directed",
+    "beforeAfterFood": "After Food"
+  },
+  {
+    "name": "Sergel",
+    "category": "Gastric",
+    "dosage": "20mg",
+    "frequency": "Once daily",
+    "beforeAfterFood": "Before Food"
+  },
+  {
+    "name": "Seclo",
+    "category": "Gastric",
+    "dosage": "20mg",
+    "frequency": "Once daily",
+    "beforeAfterFood": "Before Food"
+  },
+  {
+    "name": "DP 20",
+    "category": "Gastric",
+    "dosage": "20mg",
+    "frequency": "Once daily",
+    "beforeAfterFood": "Before Food"
+  },
+  {
+    "name": "Esotid",
+    "category": "Gastric",
+    "dosage": "20mg",
+    "frequency": "Once daily",
+    "beforeAfterFood": "Before Food"
+  },
+  {
+    "name": "Nexum",
+    "category": "Gastric",
+    "dosage": "20mg",
+    "frequency": "Once daily",
+    "beforeAfterFood": "Before Food"
+  },
+  {
+    "name": "Antacid Plus",
+    "category": "Antacid",
+    "dosage": "As directed",
+    "frequency": "As needed",
+    "beforeAfterFood": "After Food"
+  },
+  {
+    "name": "DP 10",
+    "category": "Gastric",
+    "dosage": "10mg",
+    "frequency": "Once daily",
+    "beforeAfterFood": "Before Food"
+  },
+  {
+    "name": "Monas",
+    "category": "Respiratory",
+    "dosage": "10mg",
+    "frequency": "Once daily",
+    "beforeAfterFood": "After Food"
+  },
+  {
+    "name": "DPH",
+    "category": "Antihistamine",
+    "dosage": "As directed",
+    "frequency": "Once or twice daily",
+    "beforeAfterFood": "After Food"
+  },
+  {
+    "name": "Fexo",
+    "category": "Antihistamine",
+    "dosage": "120mg",
+    "frequency": "Once daily",
+    "beforeAfterFood": "After Food"
+  },
+  {
+    "name": "Fexo 60",
+    "category": "Antihistamine",
+    "dosage": "60mg",
+    "frequency": "Twice daily",
+    "beforeAfterFood": "After Food"
+  },
+  {
+    "name": "Deslor",
+    "category": "Antihistamine",
+    "dosage": "5mg",
+    "frequency": "Once daily",
+    "beforeAfterFood": "After Food"
+  },
+  {
+    "name": "Alergin",
+    "category": "Antihistamine",
+    "dosage": "As directed",
+    "frequency": "Once daily",
+    "beforeAfterFood": "After Food"
+  },
+  {
+    "name": "DPX",
+    "category": "Antibiotic",
+    "dosage": "As prescribed",
+    "frequency": "As prescribed",
+    "beforeAfterFood": "As directed"
+  },
+  {
+    "name": "Cef-3",
+    "category": "Antibiotic",
+    "dosage": "200mg",
+    "frequency": "As prescribed",
+    "beforeAfterFood": "After Food"
+  },
+  {
+    "name": "DP 500",
+    "category": "Antibiotic",
+    "dosage": "As prescribed",
+    "frequency": "As prescribed",
+    "beforeAfterFood": "As directed"
+  },
+  {
+    "name": "Azithrocin",
+    "category": "Antibiotic",
+    "dosage": "500mg",
+    "frequency": "As prescribed",
+    "beforeAfterFood": "After Food"
+  },
+  {
+    "name": "DP-Mox",
+    "category": "Antibiotic",
+    "dosage": "As prescribed",
+    "frequency": "As prescribed",
+    "beforeAfterFood": "As directed"
+  },
+  {
+    "name": "DP-C",
+    "category": "Antibiotic",
+    "dosage": "As prescribed",
+    "frequency": "As prescribed",
+    "beforeAfterFood": "As directed"
+  },
+  {
+    "name": "Amoxicillin",
+    "category": "Antibiotic",
+    "dosage": "500mg",
+    "frequency": "As prescribed",
+    "beforeAfterFood": "As directed"
+  },
+  {
+    "name": "Cefuroxime",
+    "category": "Antibiotic",
+    "dosage": "250mg",
+    "frequency": "As prescribed",
+    "beforeAfterFood": "After Food"
+  },
+  {
+    "name": "Metronidazole",
+    "category": "Antibiotic",
+    "dosage": "400mg",
+    "frequency": "As prescribed",
+    "beforeAfterFood": "After Food"
+  },
+  {
+    "name": "ORS",
+    "category": "Oral Rehydration",
+    "dosage": "As directed",
+    "frequency": "As needed",
+    "beforeAfterFood": "Any Time"
+  },
+  {
+    "name": "Zinc",
+    "category": "Supplement",
+    "dosage": "20mg",
+    "frequency": "As directed",
+    "beforeAfterFood": "After Food"
+  },
+  {
+    "name": "Calbo-D",
+    "category": "Supplement",
+    "dosage": "As directed",
+    "frequency": "Once daily",
+    "beforeAfterFood": "After Food"
+  },
+  {
+    "name": "Calbo 500",
+    "category": "Supplement",
+    "dosage": "500mg",
+    "frequency": "Once daily",
+    "beforeAfterFood": "After Food"
+  },
+  {
+    "name": "DP-Vit",
+    "category": "Vitamin",
+    "dosage": "As directed",
+    "frequency": "Once daily",
+    "beforeAfterFood": "After Food"
+  },
+  {
+    "name": "Vitamin D3",
+    "category": "Vitamin",
+    "dosage": "As directed",
+    "frequency": "As directed",
+    "beforeAfterFood": "After Food"
+  },
+  {
+    "name": "B-Complex",
+    "category": "Vitamin",
+    "dosage": "As directed",
+    "frequency": "Once daily",
+    "beforeAfterFood": "After Food"
+  },
+  {
+    "name": "Iron",
+    "category": "Supplement",
+    "dosage": "As directed",
+    "frequency": "As directed",
+    "beforeAfterFood": "After Food"
+  },
+  {
+    "name": "Domperidone",
+    "category": "Digestive",
+    "dosage": "10mg",
+    "frequency": "As prescribed",
+    "beforeAfterFood": "Before Food"
+  },
+  {
+    "name": "Ondansetron",
+    "category": "Anti-nausea",
+    "dosage": "4mg",
+    "frequency": "As prescribed",
+    "beforeAfterFood": "As directed"
+  },
+  {
+    "name": "Loperamide",
+    "category": "Digestive",
+    "dosage": "2mg",
+    "frequency": "As directed",
+    "beforeAfterFood": "After Food"
+  },
+  {
+    "name": "Bisacodyl",
+    "category": "Laxative",
+    "dosage": "5mg",
+    "frequency": "As directed",
+    "beforeAfterFood": "Any Time"
+  },
+  {
+    "name": "Cetirizine",
+    "category": "Antihistamine",
+    "dosage": "10mg",
+    "frequency": "Once daily",
+    "beforeAfterFood": "After Food"
+  },
+  {
+    "name": "Loratadine",
+    "category": "Antihistamine",
+    "dosage": "10mg",
+    "frequency": "Once daily",
+    "beforeAfterFood": "After Food"
+  },
+  {
+    "name": "Levocetirizine",
+    "category": "Antihistamine",
+    "dosage": "5mg",
+    "frequency": "Once daily",
+    "beforeAfterFood": "After Food"
+  },
+  {
+    "name": "Salbutamol",
+    "category": "Respiratory",
+    "dosage": "As prescribed",
+    "frequency": "As prescribed",
+    "beforeAfterFood": "Any Time"
+  },
+  {
+    "name": "Budesonide",
+    "category": "Respiratory",
+    "dosage": "As prescribed",
+    "frequency": "As prescribed",
+    "beforeAfterFood": "Any Time"
+  },
+  {
+    "name": "Montelukast",
+    "category": "Respiratory",
+    "dosage": "10mg",
+    "frequency": "Once daily",
+    "beforeAfterFood": "After Food"
+  },
+  {
+    "name": "Amlodipine",
+    "category": "Blood Pressure",
+    "dosage": "5mg",
+    "frequency": "Once daily",
+    "beforeAfterFood": "Any Time"
+  },
+  {
+    "name": "Losartan",
+    "category": "Blood Pressure",
+    "dosage": "50mg",
+    "frequency": "Once daily",
+    "beforeAfterFood": "Any Time"
+  },
+  {
+    "name": "Atenolol",
+    "category": "Blood Pressure",
+    "dosage": "50mg",
+    "frequency": "Once daily",
+    "beforeAfterFood": "After Food"
+  },
+  {
+    "name": "Metformin",
+    "category": "Diabetes",
+    "dosage": "500mg",
+    "frequency": "Once or twice daily",
+    "beforeAfterFood": "After Food"
+  },
+  {
+    "name": "Gliclazide",
+    "category": "Diabetes",
+    "dosage": "80mg",
+    "frequency": "As prescribed",
+    "beforeAfterFood": "Before Food"
+  },
+  {
+    "name": "Atorvastatin",
+    "category": "Cholesterol",
+    "dosage": "10mg",
+    "frequency": "Once daily",
+    "beforeAfterFood": "Any Time"
+  },
+  {
+    "name": "Rosuvastatin",
+    "category": "Cholesterol",
+    "dosage": "10mg",
+    "frequency": "Once daily",
+    "beforeAfterFood": "Any Time"
+  },
+  {
+    "name": "Aspirin",
+    "category": "Cardiovascular",
+    "dosage": "75mg",
+    "frequency": "Once daily",
+    "beforeAfterFood": "After Food"
+  },
+  {
+    "name": "Clopidogrel",
+    "category": "Cardiovascular",
+    "dosage": "75mg",
+    "frequency": "Once daily",
+    "beforeAfterFood": "After Food"
+  }
+]
