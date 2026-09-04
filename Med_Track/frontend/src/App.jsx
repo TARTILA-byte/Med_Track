@@ -1,45 +1,38 @@
 import { BrowserRouter, Routes, Route, Outlet } from "react-router-dom";
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
-import './App.css'
+// import "./App.css";
 import Login from "./pages/Login";
 import Navbar from "./components/Navbar";
-import Home from "./pages/Home";
 import Dashboard from "./pages/Dashboard";
 import Notifications from "./pages/Notifications";
 import AllMedicines from "./pages/AllMedicines";
 import MyMedicines from "./pages/MyMedicines";
 import AddMedicine from "./pages/AddMedicine";
 
-const MainLayout = () => {
+function MainLayout() {
   return (
     <>
       <Navbar />
-      <Outlet /> 
+      <Outlet />
     </>
   );
-};
+}
 
 function App() {
   return (
-   <BrowserRouter>
+    <BrowserRouter>
       <Routes>
         <Route path="/" element={<Login />} />
-        
+
         <Route element={<MainLayout />}>
-          
-          <Route path="/home" element={<Home />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/notifications" element={<Notifications />} />
           <Route path="/all-medicines" element={<AllMedicines />} />
           <Route path="/my-medicines" element={<MyMedicines />} />
           <Route path="/add-medicine" element={<AddMedicine />} />
-         </Route> 
-        </Routes>
+        </Route>
+      </Routes>
     </BrowserRouter>
   );
 }
 
-export default App
+export default App;

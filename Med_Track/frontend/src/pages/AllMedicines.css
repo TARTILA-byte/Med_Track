@@ -1,0 +1,57 @@
+.page {
+  min-height: calc(800px - 75px);
+  padding: 70px;
+}
+
+.page-header {
+  margin-bottom: 35px;
+}
+
+.page-header h1 {
+  margin: 0 0 10px;
+  font-size: 36px;
+}
+
+.page-header p {
+  margin: 0;
+  color: #666;
+  font-size: 16px;
+}
+
+.filter-area {
+  /* display: flex;
+  gap: 15px; */
+  margin-bottom: 35px;
+}
+
+.medicine-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+}
+@media (max-width: 768px) {
+  .page {
+    padding: 30px 20px;
+  }
+
+  .page-header {
+    margin-bottom: 25px;
+  }
+
+  .page-header h1 {
+    font-size: 28px;
+  }
+
+  .page-header p {
+    font-size: 14px;
+  }
+
+  .filter-area {
+    margin-bottom: 25px;
+  }
+
+  .medicine-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}

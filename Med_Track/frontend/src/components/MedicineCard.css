@@ -9,7 +9,7 @@
 }
 
 .green-button {
-  width: 100%;
+  width: 80%;
   margin-top: 20px;
 
   padding: 13px;
@@ -24,4 +24,20 @@
   font-weight: bold;
 
   cursor: pointer;
+}
+@media (max-width: 768px) {
+  .medicine-card {
+    padding: 20px;
+    border-radius: 12px;
+  }
+
+  .medicine-card h3 {
+    font-size: 18px;
+  }
+
+  .green-button {
+    width: 100%;
+    padding: 12px;
+    font-size: 14px;
+  }
 }
