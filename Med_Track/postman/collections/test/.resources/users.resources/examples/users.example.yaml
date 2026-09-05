@@ -1,0 +1,65 @@
+$kind: http-example
+request:
+  url: http://localhost:4000/users
+  method: POST
+  body:
+    type: json
+    content: "{\r
+
+      \        \r
+
+      \        \"name\": \"xyflo\",\r
+
+      \        \"category\": \"Antihistamine\",\r
+
+      \        \"dosage\": \"10mg\",\r
+
+      \        \"frequency\": \"Once daily\",\r
+
+      \        \"beforeAfterFood\": \"After Food\"\r
+
+      \       \r
+
+      \    }"
+response:
+  statusCode: 200
+  statusText: OK
+  headers:
+    x-powered-by: Express
+    access-control-allow-origin: "*"
+    content-type: application/json; charset=utf-8
+    content-length: "270"
+    etag: W/"10e-BJ/sQC0NPdFSnvmsRGudH6oBYrY"
+    date: Sat, 05 Sep 2026 12:26:13 GMT
+    connection: keep-alive
+    keep-alive: timeout=5
+  body:
+    type: json
+    content: |-
+      [
+        {
+          "name": "John",
+          "email": "johndoe@gmail.com"
+        },
+        {
+          "name": "Rahim",
+          "email": "rahim@gmail.com"
+        },
+        {
+          "name": "Karim",
+          "email": "karim@gmail.com"
+        },
+        {
+          "name": "new user",
+          "email": "newuser@gmail.com"
+        },
+        {
+          "name": "test user",
+          "email": "testuser@gmail.com"
+        },
+        {
+          "name": "rafi",
+          "email": "rafi@gmail.com"
+        }
+      ]
+order: 1788616683944

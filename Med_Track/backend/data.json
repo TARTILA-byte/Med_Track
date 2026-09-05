@@ -1,7 +1,6 @@
-[
-  { "name": "John", "email": "johndoe@gmail.com" },
-  { "name": "Rahim", "email": "rahim@gmail.com" },
-  { "name": "Karim", "email": "karim@gmail.com" },
-  { "name": "new user", "email": "newuser@gmail.com" },
-  { "name": "test user", "email": "testuser@gmail.com" }
-]
+[{"name":"John","email":"johndoe@gmail.com"},
+{"name":"Rahim","email":"rahim@gmail.com"},
+{"name":"Karim","email":"karim@gmail.com"},
+{"name":"new user","email":"newuser@gmail.com"},
+{"name":"test user","email":"testuser@gmail.com"},
+{"name":"rafi","email":"rafi@gmail.com"}]
