@@ -23,29 +23,6 @@ mongoose
     console.log("MongoDB Connection Error:", error);
   });
 
-// Home
-app.get("/", (req, res) => {
-  res.status(200).json({
-    message: "hi tartila",
-  });
-});
-
-// Old Users API
-app.get("/users", (req, res) => {
-  res.status(200).json(users);
-});
-
-// Old User Add API
-app.post("/", (req, res) => {
-  const { name, email } = req.body;
-
-  addUser({ name, email });
-
-  res.status(201).json({
-    message: "hi",
-  });
-});
-
 // GET all medicines
 app.get("/api/medicines", async (req, res) => {
   try {
