@@ -1,11 +1,16 @@
+import "dotenv/config";
 import express from "express";
 import { users, addUser } from "./data.js";
 import mongoose from "mongoose";
-import dotenv from "dotenv";
 import cors from "cors";
 import Medicine from "./models/Medicine.js";
+import loginRoutes from "./routes/loginRouter.js";
+import registerRoutes from "./routes/register.js";
 
-dotenv.config();
+if (!process.env.MONGO_URI) {
+  console.error("CRITICAL ERROR: MONGO_URI is missing in your .env file!");
+  process.exit(1);
+}
 
 const app = express();
 
@@ -22,6 +27,33 @@ mongoose
   .catch((error) => {
     console.log("MongoDB Connection Error:", error);
   });
+
+// Routes
+app.use("/api/login", loginRoutes);
+app.use("/api/register", registerRoutes);
+
+// Home
+app.get("/", (req, res) => {
+  res.status(200).json({
+    message: " hi tartila",
+  });
+});
+
+// Old Users API
+app.get("/users", (req, res) => {
+  res.status(200).json(users);
+});
+
+// Old User Add API
+app.post("/", (req, res) => {
+  const { name, email } = req.body;
+
+  addUser({ name, email });
+
+  res.status(201).json({
+    message: "hi",
+  });
+});
 
 // GET all medicines
 app.get("/api/medicines", async (req, res) => {
