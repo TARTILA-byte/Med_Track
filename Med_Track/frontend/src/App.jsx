@@ -7,6 +7,7 @@ import Notifications from "./pages/Notifications";
 import AllMedicines from "./pages/AllMedicines";
 import MyMedicines from "./pages/MyMedicines";
 import AddMedicine from "./pages/AddMedicine";
+import SignIn from "./pages/SignIn";
 
 function MainLayout() {
   return (
@@ -22,6 +23,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Login />} />
+        <Route path="/signin" element={<SignIn />} />
 
         <Route element={<MainLayout />}>
           <Route path="/dashboard" element={<Dashboard />} />
