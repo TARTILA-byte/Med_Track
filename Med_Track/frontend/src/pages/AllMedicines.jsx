@@ -2,14 +2,12 @@ import React, { useEffect, useState } from "react";
 import "./AllMedicines.css";
 import MedicineCard from "../components/MedicineCard";
 import SearchBar from "../components/SearchBar";
-// import CategoryFilter from "../components/CategoryFilter";
 
 function AllMedicines() {
   const [medicines, setMedicines] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
-  // Get medicines from backend API
   useEffect(() => {
     fetch("http://localhost:4000/api/medicines")
       .then((response) => {

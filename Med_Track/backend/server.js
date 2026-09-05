@@ -7,7 +7,6 @@ import Medicine from "./models/Medicine.js";
 import loginRoutes from "./routes/loginRouter.js";
 import registerRoutes from "./routes/register.js";
 
-
 if (!process.env.MONGO_URI) {
   console.error("CRITICAL ERROR: MONGO_URI is missing in your .env file!");
   process.exit(1);

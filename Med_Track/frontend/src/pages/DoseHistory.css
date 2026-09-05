@@ -1,0 +1,213 @@
+.dose-history-container {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 30px 20px;
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  color: #1e293b;
+}
+
+.dose-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 28px;
+}
+
+.dose-header h1 {
+  font-size: 2.3rem;
+  font-family: Georgia, serif;
+  margin: 0;
+  color: #0f172a;
+}
+
+.subtitle {
+  color: #64748b;
+  margin: 4px 0 0 0;
+  font-size: 0.95rem;
+}
+
+.header-stats {
+  display: flex;
+  gap: 28px;
+}
+
+.stat-box {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.stat-value {
+  font-size: 1.8rem;
+  font-weight: 700;
+  font-family: Georgia, serif;
+  line-height: 1;
+}
+
+.stat-label {
+  font-size: 0.75rem;
+  color: #64748b;
+  margin-top: 4px;
+}
+
+.stat-box.missed .stat-value {
+  color: #d93025;
+}
+
+/* Adherence Progress Bar Card */
+.adherence-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  padding: 22px 26px;
+  margin-bottom: 32px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
+}
+
+.card-header h3 {
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin: 0;
+  color: #1e293b;
+}
+
+.card-sub-text {
+  font-size: 0.85rem;
+  color: #64748b;
+}
+
+.progress-bar-container {
+  width: 100%;
+  height: 10px;
+  background-color: #f1f5f9;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background-color: #064e3b;
+  border-radius: 5px;
+}
+
+.progress-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.75rem;
+  color: #94a3b8;
+  margin-top: 8px;
+}
+
+/* Daily History Logs */
+.day-group {
+  margin-bottom: 28px;
+}
+
+.day-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.day-header h2 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0;
+  color: #1e293b;
+}
+
+.day-stats {
+  font-size: 0.825rem;
+  color: #64748b;
+}
+
+.dose-cards-wrapper {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+}
+
+.dose-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 20px;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.dose-card:last-child {
+  border-bottom: none;
+}
+
+.dose-left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.status-icon {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: bold;
+}
+
+.status-icon.taken {
+  background-color: #0f766e;
+  color: #ffffff;
+}
+
+.status-icon.missed {
+  background-color: #fee2e2;
+  color: #ef4444;
+}
+
+.dose-name {
+  font-weight: 600;
+  font-size: 0.925rem;
+  color: #1e293b;
+}
+
+.dose-right {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+.dose-time {
+  font-size: 0.85rem;
+  color: #94a3b8;
+  letter-spacing: 0.05em;
+}
+
+.status-badge {
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.status-badge.taken {
+  background-color: #ccfbf1;
+  color: #0f766e;
+}
+
+.status-badge.missed {
+  background-color: #fee2e2;
+  color: #b91c1c;
+}
