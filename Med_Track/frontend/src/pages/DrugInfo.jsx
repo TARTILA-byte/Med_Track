@@ -1,62 +1,37 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./DrugInfo.css";
 
-const drugDatabase = [
-  {
-    id: "metformin",
-    name: "Metformin",
-    category: "Biguanide Antidiabetic",
-    indications:
-      "First-line treatment for type 2 diabetes mellitus. Reduces hepatic glucose production and improves insulin sensitivity in peripheral tissues.",
-    mechanism:
-      "Activates AMPK (AMP-activated protein kinase), inhibiting mitochondrial complex I, thereby reducing gluconeogenesis and glycogenolysis in the liver.",
-    dosage: "500mg – 2,550mg per day, in divided doses",
-    sideEffects: [
-      "Nausea",
-      "Diarrhea",
-      "Abdominal discomfort",
-      "Metallic taste",
-      "Vitamin B12 deficiency (long-term)",
-    ],
-    interactions: ["Alcohol", "Iodinated contrast media"],
-    warnings: ["Contraindicated in severe renal impairment", "Risk of lactic acidosis"],
-  },
-  {
-    id: "lisinopril",
-    name: "Lisinopril",
-    category: "ACE Inhibitor",
-    indications:
-      "Treatment of hypertension, heart failure, and post-myocardial infarction.",
-    mechanism:
-      "Inhibits angiotensin-converting enzyme (ACE), preventing conversion of angiotensin I to angiotensin II.",
-    dosage: "10mg – 40mg once daily",
-    sideEffects: ["Dry cough", "Dizziness", "Hyperkalemia", "Headache"],
-    interactions: ["Potassium supplements", "NSAIDs", "Lithium"],
-    warnings: ["Risk of angioedema", "Contraindicated during pregnancy"],
-  },
-  {
-    id: "atorvastatin",
-    name: "Atorvastatin",
-    category: "HMG-CoA Reductase Inhibitor (Statin)",
-    indications:
-      "Hypercholesterolemia and cardiovascular disease risk reduction.",
-    mechanism:
-      "Competitively inhibits HMG-CoA reductase, the rate-limiting enzyme in hepatic cholesterol synthesis.",
-    dosage: "10mg – 80mg once daily",
-    sideEffects: ["Myalgia", "Nasopharyngitis", "Arthralgia", "Elevated LFTs"],
-    interactions: ["CYP3A4 inhibitors", "Gemfibrozil", "Grapefruit juice"],
-    warnings: ["Monitor liver enzymes", "Discontinue if unexplained muscle pain occurs"],
-  },
-];
-
 function DrugInfo() {
+  const [drugs, setDrugs] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   const [searchTerm, setSearchTerm] = useState("");
-  const [selectedDrug, setSelectedDrug] = useState(drugDatabase[0]);
+  const [selectedDrug, setSelectedDrug] = useState(null);
 
-  const filteredDrugs = drugDatabase.filter(
+  useEffect(() => {
+    fetch("http://localhost:4000/api/druginfo")
+      .then((res) => {
+        if (!res.ok) throw new Error("Failed to fetch drug data");
+        return res.json();
+      })
+      .then((data) => {
+        setDrugs(data);
+        if (data.length > 0) {
+          setSelectedDrug(data[0]);
+        }
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.error("Error fetching drug info:", err);
+        setError("Could not load medications from database.");
+        setLoading(false);
+      });
+  }, []);
+
+  const filteredDrugs = drugs.filter(
     (drug) =>
-      drug.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      drug.category.toLowerCase().includes(searchTerm.toLowerCase())
+      drug.name?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      drug.category?.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   return (
@@ -82,16 +57,20 @@ function DrugInfo() {
           {filteredDrugs.length === 0 ? (
             <p style={{ color: "#94a3b8", fontSize: "0.9rem", marginTop: "10px" }}>No medications match your search.</p>
           ) : (
-            filteredDrugs.map((drug) => (
-              <div
-                key={drug.id}
-                className={`drug-card ${selectedDrug?.id === drug.id ? "active" : ""}`}
-                onClick={() => setSelectedDrug(drug)}
-              >
-                <h3>{drug.name}</h3>
-                <p>{drug.category}</p>
-              </div>
-            ))
+            filteredDrugs.map((drug) => {
+              const drugKey = drug._id || drug.id;
+              const isSelected = (selectedDrug?._id && selectedDrug._id === drug._id) || (selectedDrug?.id && selectedDrug.id === drug.id) || selectedDrug?.name === drug.name;
+              return (
+                <div
+                  key={drugKey}
+                  className={`drug-card ${isSelected ? "active" : ""}`}
+                  onClick={() => setSelectedDrug(drug)}
+                >
+                  <h3>{drug.name}</h3>
+                  <p>{drug.category}</p>
+                </div>
+              );
+            })
           )}
         </div>
 

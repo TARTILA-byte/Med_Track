@@ -12,11 +12,8 @@ import AllMedicines from "./pages/AllMedicines";
 import MyMedicines from "./pages/MyMedicines";
 import DoseHistory from "./pages/DoseHistory";
 import AddMedicine from "./pages/AddMedicine";
-<<<<<<< HEAD
 import SignIn from "./pages/SignIn";
-=======
 import DrugInfo from "./pages/DrugInfo";
->>>>>>> 31c9831852cc565dd93db7e2bebb071926e3d610
 
 const MainLayout = () => {
   return (
