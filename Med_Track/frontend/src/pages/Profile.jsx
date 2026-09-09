@@ -1,7 +1,10 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./Profile.css";
 
 function Profile() {
+  const navigate = useNavigate();
+
   const [user] = useState({
     name: "Alex Morgan",
     email: "alex.morgan@example.com",
@@ -23,7 +26,8 @@ function Profile() {
   };
 
   const handleLogout = () => {
-    console.log("Log out clicked");
+    localStorage.removeItem("token");
+    navigate("/");
   };
 
   return (
