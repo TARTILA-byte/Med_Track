@@ -14,6 +14,7 @@ import DoseHistory from "./pages/DoseHistory";
 import AddMedicine from "./pages/AddMedicine";
 import SignIn from "./pages/SignIn";
 import DrugInfo from "./pages/DrugInfo";
+import Profile from "./pages/Profile";
 
 const MainLayout = () => {
   return (
@@ -39,6 +40,8 @@ function App() {
           <Route path="/dose-history" element={<DoseHistory />} />
           <Route path="/add-medicine" element={<AddMedicine />} />
           <Route path="/drug-info" element={<DrugInfo />} />
+
+          <Route path="/profile" element={<Profile />} />
         </Route>
       </Routes>
     </BrowserRouter>
