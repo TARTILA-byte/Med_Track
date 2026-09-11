@@ -1,0 +1,21 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "abdul",
+      "email": "abdullah@example.com"
+      
+    },
+    {
+      "id": 2,
+      "name": "Sadia",
+      "email": "sadia@example.com"
+      
+    }
+  ],
+  "settings": {
+    "theme": "dark",
+    "language": "bn",
+    "notifications": true
+  }
+}

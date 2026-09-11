@@ -1,9 +1,8 @@
-import { BrowserRouter, Routes, Route, Outlet } from "react-router-dom";
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "./assets/vite.svg";
-import heroImg from "./assets/hero.png";
+import React, { useState, useEffect } from "react";
+import { BrowserRouter, Routes, Route, Outlet, Navigate } from "react-router-dom";
+import api from "./api/api";
 import "./App.css";
+
 import Login from "./pages/Login";
 import Navbar from "./components/Navbar";
 import Dashboard from "./pages/Dashboard";
@@ -12,13 +11,36 @@ import AllMedicines from "./pages/AllMedicines";
 import MyMedicines from "./pages/MyMedicines";
 import DoseHistory from "./pages/DoseHistory";
 import AddMedicine from "./pages/AddMedicine";
-<<<<<<< HEAD
 import SignIn from "./pages/SignIn";
-=======
 import DrugInfo from "./pages/DrugInfo";
->>>>>>> 31c9831852cc565dd93db7e2bebb071926e3d610
 
-const MainLayout = () => {
+
+const ProtectedRoute = () => {
+  const [isAuthenticated, setIsAuthenticated] = useState(null);
+
+  useEffect(() => {
+    console.log("--> ProtectedRoute Mounted: Sending API Check Request...");
+
+    api.get("/login/check")
+      .then((res) => {
+        console.log("--> Auth Response Success:", res.data);
+        setIsAuthenticated(res.data?.authenticated === true);
+      })
+      .catch((err) => {
+        console.log("--> Auth Error Catch:", err.response?.status || err.message);
+        setIsAuthenticated(false);
+      });
+  }, []); 
+
+  
+  if (isAuthenticated === null) {
+    return <div style={{ padding: "40px", textAlign: "center" }}>Verifying authentication...</div>;
+  }
+
+  if (!isAuthenticated) {
+    return <Navigate to="/" replace />;
+  }
+
   return (
     <>
       <Navbar />
@@ -34,7 +56,7 @@ function App() {
         <Route path="/" element={<Login />} />
         <Route path="/signin" element={<SignIn />} />
 
-        <Route element={<MainLayout />}>
+        <Route element={<ProtectedRoute />}>
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/notifications" element={<Notifications />} />
           <Route path="/all-medicines" element={<AllMedicines />} />
@@ -43,6 +65,8 @@ function App() {
           <Route path="/add-medicine" element={<AddMedicine />} />
           <Route path="/drug-info" element={<DrugInfo />} />
         </Route>
+
+        <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </BrowserRouter>
   );
