@@ -1,4 +1,7 @@
-import Users from "../models/Users.js"; 
+import Users from "../models/Users.js";
+import jwt from "jsonwebtoken";
+
+const lifetime = "1h";
 
 export const loginUser = async (req, res) => {
   try {
@@ -18,6 +21,27 @@ export const loginUser = async (req, res) => {
     if (user.password !== password) {
       return res.status(401).json({ message: "Invalid credentials (Wrong password)" });
     }
+
+    const token = jwt.sign(
+      {
+        id: user._id,
+        name: user.name,
+        email: user.email,
+      },
+      process.env.JWT_SECRET,
+      {
+        expiresIn: lifetime,
+      }
+    );
+
+  
+    res.cookie("token", token, {
+      httpOnly: true,
+      secure: false, 
+      sameSite: "lax",
+      maxAge: 60 * 60 * 1000, 
+      path: "/",
+    });
 
     return res.status(200).json({
       message: "Login successful!",

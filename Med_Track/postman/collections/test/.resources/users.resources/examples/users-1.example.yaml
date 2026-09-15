@@ -1,0 +1,47 @@
+$kind: http-example
+name: users
+request:
+  url: http://localhost:4000/api/register/jon@example.com
+  method: PUT
+  body:
+    type: json
+    content: "{\r
+
+      \        \r
+
+      \        \"name\": \"Jon\",\r
+
+      \        \"email\": \"jon@gmail.com\",\r
+
+      \        \"password\": 1234\r
+
+      \       \r
+
+      \    }"
+response:
+  statusCode: 404
+  statusText: Not Found
+  headers:
+    x-powered-by: Express
+    access-control-allow-origin: "*"
+    content-security-policy: default-src 'none'
+    x-content-type-options: nosniff
+    content-type: text/html; charset=utf-8
+    content-length: "167"
+    date: Thu, 10 Sep 2026 15:50:06 GMT
+    connection: keep-alive
+    keep-alive: timeout=5
+  body:
+    type: html
+    content: |
+      <!DOCTYPE html>
+      <html lang="en">
+      <head>
+      <meta charset="utf-8">
+      <title>Error</title>
+      </head>
+      <body>
+      <pre>Cannot PUT /api/register/jon@example.com</pre>
+      </body>
+      </html>
+order: 1996792558494179
