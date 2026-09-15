@@ -21,7 +21,7 @@ function MyMedicines() {
       id: 2,
       name: "Seclo 20mg",
       category: "Gastric",
-      dosage: "20 mg",
+      dosage: "200 mg",
       frequency: "Once a day",
       today: "2026-08-22",
       time: "09:00",
