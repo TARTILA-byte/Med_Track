@@ -8,7 +8,8 @@ function Profile() {
   const [user] = useState({
     name: "Alex Morgan",
     email: "alex.morgan@example.com",
-    accountType: "Patien account",
+    accountType: "Patient account",
+
     gender: "Female",
     age: 42,
     weight: 68,

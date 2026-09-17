@@ -9,6 +9,8 @@ import MyMedicine from "./models/MyMedicine.js";
 import loginRoutes from "./routes/loginRouter.js";
 import registerRoutes from "./routes/register.js";
 import checkToken from "./middlewares/checkToken.js";
+import drugInfoRoutes from "./routes/drugInfo.js";
+
 
 if (!process.env.MONGO_URI) {
   console.error("CRITICAL ERROR: MONGO_URI is missing in your .env file!");
@@ -43,7 +45,7 @@ mongoose
 // Routes
 app.use("/api/login", loginRoutes);
 app.use("/api/register", registerRoutes);
-
+app.use("/api/druginfo", drugInfoRoutes);
 // Home
 app.get("/", (req, res) => {
   res.status(200).json({

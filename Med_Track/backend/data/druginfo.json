@@ -1,0 +1,102 @@
+[
+  {
+    "name": "Metformin",
+    "category": "Biguanide Antidiabetic",
+    "indications": "First-line treatment for type 2 diabetes mellitus. Reduces hepatic glucose production and improves insulin sensitivity in peripheral tissues.",
+    "mechanism": "Activates AMPK (AMP-activated protein kinase), inhibiting mitochondrial complex I, thereby reducing gluconeogenesis and glycogenolysis in the liver.",
+    "dosage": "500mg – 2,550mg per day, in divided doses",
+    "sideEffects": ["Nausea", "Diarrhea", "Abdominal discomfort", "Metallic taste", "Vitamin B12 deficiency (long-term)"],
+    "interactions": ["Alcohol", "Iodinated contrast media"],
+    "warnings": ["Contraindicated in severe renal impairment", "Risk of lactic acidosis"]
+  },
+  {
+    "name": "Lisinopril",
+    "category": "ACE Inhibitor",
+    "indications": "Treatment of hypertension, heart failure, and post-myocardial infarction.",
+    "mechanism": "Inhibits angiotensin-converting enzyme (ACE), preventing conversion of angiotensin I to angiotensin II.",
+    "dosage": "10mg – 40mg once daily",
+    "sideEffects": ["Dry cough", "Dizziness", "Hyperkalemia", "Headache"],
+    "interactions": ["Potassium supplements", "NSAIDs", "Lithium"],
+    "warnings": ["Risk of angioedema", "Contraindicated during pregnancy"]
+  },
+  {
+    "name": "Atorvastatin",
+    "category": "HMG-CoA Reductase Inhibitor (Statin)",
+    "indications": "Hypercholesterolemia and cardiovascular disease risk reduction.",
+    "mechanism": "Competitively inhibits HMG-CoA reductase, the rate-limiting enzyme in hepatic cholesterol synthesis.",
+    "dosage": "10mg – 80mg once daily",
+    "sideEffects": ["Myalgia", "Nasopharyngitis", "Arthralgia", "Elevated LFTs"],
+    "interactions": ["CYP3A4 inhibitors", "Gemfibrozil", "Grapefruit juice"],
+    "warnings": ["Monitor liver enzymes", "Discontinue if unexplained muscle pain occurs"]
+  },
+  {
+    "name": "Napa",
+    "category": "Analgesic / Antipyretic",
+    "indications": "Relief of mild to moderate pain and fever. Commonly used for headache, toothache, muscle pain, and cold/flu symptoms.",
+    "mechanism": "Inhibits cyclooxygenase (COX) enzymes in the central nervous system, reducing prostaglandin synthesis to lower pain perception and body temperature.",
+    "dosage": "500mg – 1,000mg every 4-6 hours, max 4g per day",
+    "sideEffects": ["Nausea", "Allergic skin reactions", "Liver damage (overdose)"],
+    "interactions": ["Warfarin", "Alcohol", "Isoniazid"],
+    "warnings": ["Do not exceed recommended dose", "Avoid in severe hepatic impairment"]
+  },
+  {
+    "name": "Amoxicillin",
+    "category": "Penicillin Antibiotic",
+    "indications": "Bacterial infections including upper/lower respiratory tract infections, urinary tract infections, skin infections, and dental abscesses.",
+    "mechanism": "Inhibits bacterial cell wall synthesis by binding to penicillin-binding proteins (PBPs), disrupting peptidoglycan cross-linking.",
+    "dosage": "250mg – 500mg every 8 hours, or 500mg – 875mg every 12 hours",
+    "sideEffects": ["Diarrhea", "Nausea", "Skin rash", "Vomiting"],
+    "interactions": ["Methotrexate", "Warfarin", "Oral contraceptives (reduced efficacy)"],
+    "warnings": ["Hypersensitivity to penicillins", "Risk of Clostridioides difficile-associated diarrhea"]
+  },
+  {
+    "name": "Omeprazole",
+    "category": "Proton Pump Inhibitor (PPI)",
+    "indications": "Gastroesophageal reflux disease (GERD), peptic ulcers, Zollinger-Ellison syndrome, and H. pylori eradication (in combination therapy).",
+    "mechanism": "Irreversibly inhibits the H+/K+ ATPase proton pump in gastric parietal cells, blocking the final step of acid secretion.",
+    "dosage": "20mg – 40mg once daily, before a meal",
+    "sideEffects": ["Headache", "Nausea", "Diarrhea", "Abdominal pain", "Vitamin B12 deficiency (long-term)"],
+    "interactions": ["Clopidogrel", "Methotrexate", "CYP2C19 substrates"],
+    "warnings": ["Long-term use may increase risk of bone fractures", "Risk of hypomagnesemia with prolonged use"]
+  },
+  {
+    "name": "Cetirizine",
+    "category": "Second-generation Antihistamine",
+    "indications": "Allergic rhinitis (seasonal and perennial), chronic urticaria, and other allergic conditions.",
+    "mechanism": "Selective antagonist of peripheral H1 receptors, blocking histamine-mediated allergic responses without significant CNS sedation.",
+    "dosage": "10mg once daily",
+    "sideEffects": ["Drowsiness", "Dry mouth", "Fatigue", "Headache"],
+    "interactions": ["CNS depressants", "Alcohol", "Theophylline"],
+    "warnings": ["Use caution in renal impairment", "May cause drowsiness in some patients"]
+  },
+  {
+    "name": "Losartan",
+    "category": "Angiotensin II Receptor Blocker (ARB)",
+    "indications": "Hypertension, diabetic nephropathy in type 2 diabetes, and stroke risk reduction.",
+    "mechanism": "Selectively blocks AT1 receptors, preventing angiotensin II from causing vasoconstriction and aldosterone secretion.",
+    "dosage": "25mg – 100mg once daily",
+    "sideEffects": ["Dizziness", "Upper respiratory infection", "Back pain", "Hyperkalemia"],
+    "interactions": ["Potassium-sparing diuretics", "NSAIDs", "Lithium"],
+    "warnings": ["Contraindicated in pregnancy", "Monitor potassium levels"]
+  },
+  {
+    "name": "Salbutamol",
+    "category": "Short-Acting Beta-2 Agonist (SABA)",
+    "indications": "Acute bronchospasm relief in asthma and COPD. Prevention of exercise-induced bronchospasm.",
+    "mechanism": "Activates beta-2 adrenergic receptors in bronchial smooth muscle, causing relaxation and bronchodilation via increased intracellular cAMP.",
+    "dosage": "100mcg – 200mcg (1-2 puffs) inhaled, every 4-6 hours as needed",
+    "sideEffects": ["Tremor", "Tachycardia", "Headache", "Palpitations"],
+    "interactions": ["Beta-blockers (antagonism)", "MAO inhibitors", "Diuretics (hypokalemia risk)"],
+    "warnings": ["Do not exceed recommended frequency", "Increasing use may indicate worsening asthma"]
+  },
+  {
+    "name": "Amlodipine",
+    "category": "Calcium Channel Blocker (Dihydropyridine)",
+    "indications": "Hypertension and chronic stable angina pectoris.",
+    "mechanism": "Inhibits calcium ion influx through L-type calcium channels in vascular smooth muscle, causing vasodilation and reduced peripheral resistance.",
+    "dosage": "2.5mg – 10mg once daily",
+    "sideEffects": ["Peripheral edema", "Dizziness", "Flushing", "Fatigue"],
+    "interactions": ["CYP3A4 inhibitors", "Simvastatin (dose limit)", "Cyclosporine"],
+    "warnings": ["Use caution in severe aortic stenosis", "May worsen heart failure in some patients"]
+  }
+]

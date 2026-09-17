@@ -18,7 +18,10 @@ import AllMedicines from "./pages/AllMedicines";
 import MyMedicines from "./pages/MyMedicines";
 import DoseHistory from "./pages/DoseHistory";
 import AddMedicine from "./pages/AddMedicine";
+import SignIn from "./pages/SignIn";
 import DrugInfo from "./pages/DrugInfo";
+import Profile from "./pages/Profile";
+
 
 
 function Layout() {
@@ -39,16 +42,17 @@ function App() {
         <Route path="/signin" element={<SignIn />} />
 
         {/* Protected Routes wrapped in Layout */}
-        <Route element={<ProtectedRoute />}>
-          <Route element={<Layout />}>
-            <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/notifications" element={<Notifications />} />
-            <Route path="/all-medicines" element={<AllMedicines />} />
-            <Route path="/my-medicines" element={<MyMedicines />} />
-            <Route path="/dose-history" element={<DoseHistory />} />
-            <Route path="/add-medicine" element={<AddMedicine />} />
-            <Route path="/drug-info" element={<DrugInfo />} />
-          </Route>
+        <Route element={<ProtectedRoute><Layout /></ProtectedRoute>}>
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/notifications" element={<Notifications />} />
+          <Route path="/all-medicines" element={<AllMedicines />} />
+          <Route path="/my-medicines" element={<MyMedicines />} />
+          <Route path="/dose-history" element={<DoseHistory />} />
+          <Route path="/add-medicine" element={<AddMedicine />} />
+          <Route path="/drug-info" element={<DrugInfo />} />
+          <Route path="/profile" element={<Profile />} />
+        </Route>
+
         </Route>
 
         {/* Fallback Route */}

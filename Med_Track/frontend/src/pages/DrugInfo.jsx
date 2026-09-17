@@ -1,69 +1,36 @@
 import React, { useState, useEffect } from "react";
-
 import "./DrugInfo.css";
 
-
-
 function DrugInfo() {
-
   const [drugs, setDrugs] = useState([]);
-
   const [loading, setLoading] = useState(true);
-
   const [error, setError] = useState(null);
-
   const [searchTerm, setSearchTerm] = useState("");
-
   const [selectedDrug, setSelectedDrug] = useState(null);
 
-
-
   useEffect(() => {
-
     fetch("http://localhost:4000/api/druginfo")
-
       .then((res) => {
-
         if (!res.ok) throw new Error("Failed to fetch drug data");
-
         return res.json();
-
       })
-
       .then((data) => {
-
         setDrugs(data);
-
         if (data.length > 0) {
-
           setSelectedDrug(data[0]);
-
         }
-
         setLoading(false);
-
       })
-
       .catch((err) => {
-
         console.error("Error fetching drug info:", err);
-
         setError("Could not load medications from database.");
-
         setLoading(false);
-
       });
-
   }, []);
 
-
-
   const filteredDrugs = drugs.filter(
-
     (drug) =>
-
       drug.name?.toLowerCase().includes(searchTerm.toLowerCase()) ||
-
       drug.category?.toLowerCase().includes(searchTerm.toLowerCase())
 
   );
@@ -115,33 +82,19 @@ function DrugInfo() {
             <p style={{ color: "#94a3b8", fontSize: "0.9rem", marginTop: "10px" }}>No medications match your search.</p>
 
           ) : (
-
             filteredDrugs.map((drug) => {
-
               const drugKey = drug._id || drug.id;
-
               const isSelected = (selectedDrug?._id && selectedDrug._id === drug._id) || (selectedDrug?.id && selectedDrug.id === drug.id) || selectedDrug?.name === drug.name;
-
               return (
-
                 <div
-
                   key={drugKey}
-
-                  className={'drug-card ${isSelected ? "active" : ""}'}
-
+                  className={`drug-card ${isSelected ? "active" : ""}`}
                   onClick={() => setSelectedDrug(drug)}
-
                 >
-
                   <h3>{drug.name}</h3>
-
                   <p>{drug.category}</p>
-
                 </div>
-
               );
-
             })
 
           )}

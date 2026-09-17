@@ -17,6 +17,7 @@ function Navbar() {
         <Link to="/my-medicines">My Medicines</Link>
          <Link to="/dose-history">Dose History</Link>
            <Link to="/drug-info">Drug Reference</Link>
+        <Link to="/profile">Profile</Link>
       </div>
     </nav>
   );
