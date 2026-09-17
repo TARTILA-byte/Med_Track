@@ -19,8 +19,6 @@
 }
 
 .filter-area {
-  /* display: flex;
-  gap: 15px; */
   margin-bottom: 35px;
 }
 
@@ -29,6 +27,58 @@
   grid-template-columns: repeat(3, 1fr);
   gap: 25px;
 }
+
+/* No medicine message */
+
+.no-medicines {
+  font-size: 18px;
+  color: #666;
+  margin-top: 30px;
+}
+
+/* Pagination */
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin-top: 40px;
+  padding-bottom: 30px;
+}
+
+.pagination button {
+  min-width: 40px;
+  height: 40px;
+  padding: 0 12px;
+  border: 1px solid #ddd;
+  border-radius: 7px;
+  background: white;
+  color: #222;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.pagination button:hover:not(:disabled) {
+  background: #16a85a;
+  color: white;
+  border-color: #16a85a;
+}
+
+.pagination button.active-page {
+  background: #16a85a;
+  color: white;
+  border-color: #16a85a;
+  font-weight: bold;
+}
+
+.pagination button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Responsive */
+
 @media (max-width: 768px) {
   .page {
     padding: 30px 20px;
@@ -53,5 +103,9 @@
   .medicine-grid {
     grid-template-columns: 1fr;
     gap: 20px;
+  }
+
+  .pagination {
+    flex-wrap: wrap;
   }
 }
