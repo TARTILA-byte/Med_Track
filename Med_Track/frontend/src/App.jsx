@@ -18,7 +18,6 @@ import AllMedicines from "./pages/AllMedicines";
 import MyMedicines from "./pages/MyMedicines";
 import DoseHistory from "./pages/DoseHistory";
 import AddMedicine from "./pages/AddMedicine";
-import SignIn from "./pages/SignIn";
 import DrugInfo from "./pages/DrugInfo";
 import Profile from "./pages/Profile";
 
@@ -37,11 +36,11 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        {/* Public Routes */}
+        
         <Route path="/" element={<Login />} />
         <Route path="/signin" element={<SignIn />} />
 
-        {/* Protected Routes wrapped in Layout */}
+       
         <Route element={<ProtectedRoute><Layout /></ProtectedRoute>}>
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/notifications" element={<Notifications />} />
@@ -53,9 +52,9 @@ function App() {
           <Route path="/profile" element={<Profile />} />
         </Route>
 
-        </Route>
+       
 
-        {/* Fallback Route */}
+       
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </BrowserRouter>

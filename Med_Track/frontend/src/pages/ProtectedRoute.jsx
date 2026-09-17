@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Navigate, Outlet } from "react-router-dom";
 import api from "../api/api";
 
-const ProtectedRoute = () => {
+const ProtectedRoute = ({children} )=> {
   const [authenticated, setAuthenticated] = useState(null);
 
   useEffect(() => {
@@ -27,7 +27,11 @@ const ProtectedRoute = () => {
     return <h2>Checking authentication...</h2>;
   }
 
-  return authenticated ? <Outlet /> : <Navigate to="/" replace />;
+  if (!authenticated) {
+  return <Navigate to="/" replace />;
+}
+
+return children ? children : <Outlet />;
 };
 
 export default ProtectedRoute;

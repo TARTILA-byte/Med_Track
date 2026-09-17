@@ -4,7 +4,12 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 70px;
+  padding: 0 5%;
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 9999; /* Page content-er shobar upore UI layer show korar jonno */
+  box-sizing: border-box;
 }
 
 .logo {
