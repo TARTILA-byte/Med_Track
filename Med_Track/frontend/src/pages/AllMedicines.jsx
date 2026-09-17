@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./AllMedicines.css";
+import api from "../api/api";
 import MedicineCard from "../components/MedicineCard";
 import SearchBar from "../components/SearchBar";
 
@@ -8,26 +9,21 @@ function AllMedicines() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
-  useEffect(() => {
-    fetch("http://localhost:4000/api/medicines")
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Failed to fetch medicines");
-        }
-
-        return response.json();
-      })
-      .then((data) => {
-        setMedicines(data);
+ useEffect(() => {
+    const fetchMedicines = async () => {
+      try {
+        setLoading(true);
+        const response = await api.get("/medicines");
+        setMedicines(response.data);
+      } catch (err) {
+        console.error("Fetch Error:", err);
+        setError("Failed to load medicines. Please login again.");
+      } finally {
         setLoading(false);
-      })
-      .catch((error) => {
-        console.error("Error fetching medicines:", error);
-        setError("Failed to load medicines.");
-        setLoading(false);
-      });
+      }
+    };
+    fetchMedicines(); 
   }, []);
-
   return (
     <div className="page">
       <div className="page-header">
@@ -49,7 +45,7 @@ function AllMedicines() {
       {!loading && !error && (
         <div className="medicine-grid">
           {medicines.map((medicine) => (
-            <MedicineCard key={medicine._id} medicine={medicine} />
+            <MedicineCard key={medicine._id || medicine.id} medicine={medicine} />
           ))}
         </div>
       )}

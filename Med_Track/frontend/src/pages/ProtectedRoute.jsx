@@ -1,5 +1,6 @@
+import React, { useEffect, useState } from "react";
 import { Navigate, Outlet } from "react-router-dom";
-import { useEffect, useState } from "react";
+import api from "../api/api";
 
 const ProtectedRoute = () => {
   const [authenticated, setAuthenticated] = useState(null);
@@ -7,19 +8,8 @@ const ProtectedRoute = () => {
   useEffect(() => {
     const checkAuth = async () => {
       try {
-        const response = await fetch(
-          "http://localhost:4000/api/login/check",
-          {
-            credentials: "include",
-          }
-        );
-
-        const data = await response.json();
-
-        console.log("PROTECTED ROUTE RESPONSE:", data);
-        console.log("AUTHENTICATED:", data.authenticated);
-
-        if (data.authenticated === true) {
+        const response = await api.get("/login/check");
+        if (response.data && response.data.authenticated) {
           setAuthenticated(true);
         } else {
           setAuthenticated(false);
@@ -37,11 +27,7 @@ const ProtectedRoute = () => {
     return <h2>Checking authentication...</h2>;
   }
 
-  if (authenticated === false) {
-    return <Navigate to="/" replace />;
-  }
-
-  return <Outlet />;
+  return authenticated ? <Outlet /> : <Navigate to="/" replace />;
 };
 
 export default ProtectedRoute;

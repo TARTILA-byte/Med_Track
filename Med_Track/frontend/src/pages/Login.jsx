@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Login.css";
 import api from "../api/api";
@@ -12,48 +12,33 @@ const Login = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
-  
-  useEffect(() => {
-    api.get("/login/check")
-      .then((res) => {
-        if (res.data.authenticated) {
-          
-          navigate("/all-medicines", { replace: true });
-        }
-      })
-      .catch(() => {
-        
-      });
-  }, [navigate]);
 
-  const handleLogin = async (e) => {
-    e.preventDefault();
 
-    setLoading(true);
-    setError("");
+const handleLogin = async (e) => {
+  e.preventDefault();
 
-    const email = emailRef.current.value;
-    const password = passwordRef.current.value;
+  setLoading(true);
+  setError("");
 
-    try {
-      // Login request
-      const response = await api.post("/login", {
-        email: email,
-        password: password,
-      });
+  const email = emailRef.current.value;
+  const password = passwordRef.current.value;
 
-      console.log("Login successful:", response.data);
+  try {
+    const response = await api.post("/login", { email, password });
 
-   
+    if (response.status === 200) {
+      localStorage.setItem("token", response.data.token);
       navigate("/all-medicines", { replace: true });
-
-    } catch (err) {
-      console.error("Login Error:", err);
-      setError(err.response?.data?.message || err.message || "Login failed!");
-    } finally {
-      setLoading(false);
     }
-  };
+  } catch (err) {
+    console.error("Login Error:", err);
+    setError(
+      err.response?.data?.message || err.message || "Login failed!"
+    );
+  } finally {
+    setLoading(false);
+  }
+}; 
 
   return (
     <div className="login-container">
