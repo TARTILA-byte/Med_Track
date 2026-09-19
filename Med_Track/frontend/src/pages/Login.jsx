@@ -85,6 +85,12 @@ const handleLogin = async (e) => {
           </span>
         </p>
 
+        <div className="admin-switch-link">
+          <span>Are you an administrator? </span>
+          <span onClick={() => navigate("/admin/login")}>
+            Admin Login →
+          </span>
+        </div>
       </div>
     </div>
   );

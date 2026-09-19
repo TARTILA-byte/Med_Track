@@ -10,6 +10,8 @@ import loginRoutes from "./routes/loginRouter.js";
 import registerRoutes from "./routes/register.js";
 import checkToken from "./middlewares/checkToken.js";
 import drugInfoRoutes from "./routes/drugInfo.js";
+import adminRoutes from "./routes/adminRoutes.js";
+
 
 
 if (!process.env.MONGO_URI) {
@@ -21,8 +23,14 @@ const app = express();
 
 const PORT = 4000;
 
+app.use((req, res, next) => {
+  console.log(`[${new Date().toISOString()}] ${req.method} ${req.url} - Origin: ${req.headers.origin}`);
+  next();
+});
+
 app.use(
   cors({
+
     origin: true,
     credentials: true,
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
@@ -46,6 +54,7 @@ mongoose
 app.use("/api/login", loginRoutes);
 app.use("/api/register", registerRoutes);
 app.use("/api/druginfo", drugInfoRoutes);
+app.use("/api/admin", adminRoutes);
 // Home
 app.get("/", (req, res) => {
   res.status(200).json({

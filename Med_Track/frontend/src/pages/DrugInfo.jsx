@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import "./DrugInfo.css";
 
 function DrugInfo() {
@@ -78,13 +78,15 @@ function DrugInfo() {
           <span className="list-count">{filteredDrugs.length} MEDICATIONS</span>
 
           {filteredDrugs.length === 0 ? (
-
             <p style={{ color: "#94a3b8", fontSize: "0.9rem", marginTop: "10px" }}>No medications match your search.</p>
-
           ) : (
             filteredDrugs.map((drug) => {
               const drugKey = drug._id || drug.id;
-              const isSelected = (selectedDrug?._id && selectedDrug._id === drug._id) || (selectedDrug?.id && selectedDrug.id === drug.id) || selectedDrug?.name === drug.name;
+              const isSelected =
+                (selectedDrug?._id && selectedDrug._id === drug._id) ||
+                (selectedDrug?.id && selectedDrug.id === drug.id) ||
+                selectedDrug?.name === drug.name;
+
               return (
                 <div
                   key={drugKey}
@@ -158,9 +160,7 @@ function DrugInfo() {
                 <h4>SIDE EFFECTS</h4>
 
                 <div className="tags-container">
-
                   {selectedDrug.sideEffects.map((effect, idx) => (
-
                     <span key={idx} className="tag">
 
                       {effect}
@@ -184,9 +184,7 @@ function DrugInfo() {
                 <h4>DRUG INTERACTIONS</h4>
 
                 <div className="tags-container">
-
                   {selectedDrug.interactions.map((item, idx) => (
-
                     <span key={idx} className="tag tag-orange">
 
                       {item}
@@ -206,9 +204,7 @@ function DrugInfo() {
                 <h4>WARNINGS</h4>
 
                 <div className="tags-container">
-
                   {selectedDrug.warnings.map((warn, idx) => (
-
                     <span key={idx} className="tag tag-red">
 
                       {warn}
@@ -237,4 +233,5 @@ function DrugInfo() {
 
 
 
-export default DrugInfo; 
+export default DrugInfo;
+ 
