@@ -81,4 +81,24 @@
   color: rgb(1, 104, 1);
 }
 
+.admin-switch-link {
+  margin-top: 25px;
+  padding-top: 15px;
+  border-top: 1px solid #e2e8f0;
+  font-size: 13.5px;
+  color: #64748b;
+}
+
+.admin-switch-link span:last-child {
+  color: #0284c7;
+  font-weight: 700;
+  cursor: pointer;
+  margin-left: 4px;
+}
+
+.admin-switch-link span:last-child:hover {
+  color: #0369a1;
+  text-decoration: underline;
+}
+
 

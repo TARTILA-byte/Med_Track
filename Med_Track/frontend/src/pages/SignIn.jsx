@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "./Login.css"; 
+import "./Login.css";
 const SignIn = () => {
   const navigate = useNavigate();
 
@@ -102,13 +102,15 @@ const SignIn = () => {
           </button>
         </form>
 
-        <p class="login-text">
+        <p className="login-text">
           Already have an account?{" "}
-          <span
-            onClick={() => navigate("/login")}>
-            Login
-          </span>
+          <span onClick={() => navigate("/")}>Login</span>
         </p>
+
+        <div className="admin-switch-link">
+          <span>Are you an administrator? </span>
+          <span onClick={() => navigate("/admin/signup")}>Admin Sign Up →</span>
+        </div>
       </div>
     </div>
   );
