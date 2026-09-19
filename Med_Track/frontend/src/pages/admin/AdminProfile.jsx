@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import "./AdminProfile.css";
-
+import api from "../../api/api";
 function AdminProfile() {
   const navigate = useNavigate();
 
@@ -21,7 +21,7 @@ function AdminProfile() {
           occupasion: parsed.occupasion || "Occupasion",
         };
       } catch (e) {
-        // fallback
+        console.error("Error parsing admin data", e);
       }
     }
     return {
@@ -40,8 +40,7 @@ function AdminProfile() {
 
   useEffect(() => {
     // Fetch count of drugs in the reference database
-    fetch("http://localhost:4000/api/druginfo")
-      .then((res) => (res.ok ? res.json() : []))
+    api.get("/druginfo")
       .then((data) => {
         if (Array.isArray(data)) {
           setDrugCount(data.length);
@@ -57,10 +56,22 @@ function AdminProfile() {
     setIsEditing(false);
   };
 
-  const handleLogout = () => {
+  const handleLogout = async () => {
+  try {
+    
+    await api.post("/admin/logout",  );
+  } catch (error) {
+    console.error("Logout failed:", error);
+  } finally {
+    setAdmin(null); 
+    localStorage.removeItem("adminToken");
     localStorage.removeItem("adminUser");
-    navigate("/admin/login");
-  };
+
+    
+    window.location.href = "/admin/login";
+  
+  }
+};
 
   return (
     <div className="admin-profile-container">
@@ -110,7 +121,7 @@ function AdminProfile() {
                     <span className="detail-value">Tier 1 (Clinical Monograph Publisher)</span>
                   </div>
                   <div className="detail-box">
-                    <span className="detail-label"> Occupasion </span>
+                    <span className="detail-label"> Occupation </span>
                     <span className="detail-value">{admin.occupasion}</span>
                   </div>
                 </div>

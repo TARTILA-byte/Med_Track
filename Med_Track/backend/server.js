@@ -12,8 +12,6 @@ import checkToken from "./middlewares/checkToken.js";
 import drugInfoRoutes from "./routes/drugInfo.js";
 import adminRoutes from "./routes/adminRoutes.js";
 
-
-
 if (!process.env.MONGO_URI) {
   console.error("CRITICAL ERROR: MONGO_URI is missing in your .env file!");
   process.exit(1);

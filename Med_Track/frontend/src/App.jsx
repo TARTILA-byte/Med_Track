@@ -29,6 +29,7 @@ import AdminLogin from "./pages/admin/AdminLogin";
 import AddDrugReference from "./pages/admin/AddDrugReference";
 import AdminProfile from "./pages/admin/AdminProfile";
 import AdminSignUp from "./pages/admin/AdminSignUp";
+import AdminProtectedRoute from "./pages/admin/AdminProtectedRoute";
 
 
 
@@ -67,12 +68,13 @@ function App() {
         {/* --- Standalone Admin Pages (No complex token checking) --- */}
         <Route path="/admin/login" element={<AdminLogin />} />
         <Route path="/admin/signup" element={<AdminSignUp />} />
+        <Route element={<AdminProtectedRoute />}>
         <Route path="/admin" element={<AdminLayout />}>
           <Route index element={<Navigate to="/admin/profile" replace />} />
           <Route path="add-drug-reference" element={<AddDrugReference />} />
           <Route path="profile" element={<AdminProfile />} />
         </Route>
-
+        </Route>
 
 
         {/* Fallback Route */}

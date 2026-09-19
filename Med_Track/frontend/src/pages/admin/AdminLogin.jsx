@@ -1,44 +1,39 @@
 import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import "./AdminLogin.css";
+import api from "../../api/api";
 
-function AdminLogin() {
+const AdminLogin=()=> {
   const navigate = useNavigate();
+  
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
 
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
-  const handleSubmit = async (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
+
+    setLoading(true);
     setError("");
 
-    if (!email || !password) {
-      setError("Please provide both email and password.");
-      return;
-    }
-
     try {
-      setLoading(true);
-      const res = await fetch("http://localhost:4000/api/admin/login", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, password }),
-      });
+      const response = await api.post("/admin/login",
+        { email, password },
+        { withCredentials: true } 
+      );
 
-      const data = await res.json();
-
-      if (!res.ok) {
-        throw new Error(data.message || "Invalid email or password.");
+      if (response.status === 200) {
+        localStorage.setItem("adminToken", response.data.token);
+        localStorage.setItem("adminUser", JSON.stringify(response.data.admin));
+        navigate("/admin/profile", { replace: true });
       }
-
-      // Store authenticated admin data
-      localStorage.setItem("adminUser", JSON.stringify(data.admin));
-      navigate("/admin/profile");
     } catch (err) {
       console.error("Admin Login Error:", err);
-      setError(err.message || "Failed to connect to backend server.");
+      setError(
+        err.response?.data?.message || err.message || "Admin Login failed!"
+      );
     } finally {
       setLoading(false);
     }
@@ -58,7 +53,7 @@ function AdminLogin() {
 
         {error && <div className="admin-auth-error">{error}</div>}
 
-        <form className="admin-auth-form" onSubmit={handleSubmit}>
+        <form className="admin-auth-form" onSubmit={handleLogin}>
           <div className="form-group">
             <label>Admin Email</label>
             <input
@@ -87,7 +82,8 @@ function AdminLogin() {
             />
           </div>
 
-          <button type="submit" className="btn-admin-auth">
+          <button type="submit" className="btn-admin-auth" disabled={loading}>
+            {loading ? "Signing In..." : "Sign In to Admin Portal"}
             Sign In to Admin Portal
           </button>
         </form>

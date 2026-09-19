@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Profile.css";
+import api from "../api/api";
 
 function Profile() {
   const navigate = useNavigate();
@@ -26,9 +27,15 @@ function Profile() {
     console.log("Edit profile clicked");
   };
 
-  const handleLogout = () => {
-    localStorage.removeItem("token");
-    navigate("/");
+  const handleLogout = async () => {
+    try {
+      await api.post("/login/logout");
+    } catch (error) {
+      console.error("Logout failed:", error);
+    } finally {
+      localStorage.removeItem("adminToken");
+      navigate("/", { replace: true });
+    }
   };
 
   return (

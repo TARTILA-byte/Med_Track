@@ -1,5 +1,7 @@
 import express from "express";
+import jwt from "jsonwebtoken";
 import Admin from "../models/Admin.js";
+import checkToken from "../middlewares/checkToken.js";
 
 const router = express.Router();
 
@@ -7,7 +9,6 @@ const router = express.Router();
 router.post("/register", async (req, res) => {
   try {
     const { name, email, password, role, department } = req.body;
-
     if (!name || !email || !password) {
       return res.status(400).json({ message: "Name, email, and password are required." });
     }
@@ -64,9 +65,30 @@ router.post("/login", async (req, res) => {
     if (admin.password !== password) {
       return res.status(401).json({ message: "Invalid email or password." });
     }
+    const token = jwt.sign(
+          {
+            id: admin._id,
+            name: admin.name,
+            email: admin.email,
+          },
+          process.env.JWT_SECRET,
+          {
+            expiresIn: "1h",
+          }
+        );
+    
+      
+        res.cookie("token", token, {
+          httpOnly: true,
+          secure: false, 
+          sameSite: "lax",
+          maxAge: 60 * 60 * 1000, 
+          path: "/",
+        });
 
     return res.status(200).json({
       message: "Admin login successful.",
+      token,
       admin: {
         id: admin._id,
         name: admin.name,
@@ -83,17 +105,42 @@ router.post("/login", async (req, res) => {
   }
 });
 
-// Get all admins
-router.get("/", async (req, res) => {
-  try {
-    const admins = await Admin.find().select("-password");
-    return res.status(200).json(admins);
-  } catch (error) {
-    return res.status(500).json({
-      message: "Failed to fetch admins.",
-      error: error.message,
-    });
-  }
+
+// Check if user is logged in
+router.get("/check", checkToken, (req, res) => {
+  return res.json({
+    authenticated: true,
+    user: req.user
+  });
+}); 
+
+router.post("/logout", (req, res) => {
+  res.clearCookie("token", {
+    httpOnly: true,
+    expires: new Date(0),
+    maxAge: 0,
+    sameSite: "lax",
+    secure: false,
+    path: "/", 
+  });
+
+  return res.status(200).json({
+    success: true,
+    message: "Logged out successfully",
+  });
 });
+  // Get all admins
+  router.get("/", async (req, res) => {
+    try {
+      const admins = await Admin.find().select("-password");
+      return res.status(200).json(admins);
+    } catch (error) {
+      return res.status(500).json({
+        message: "Failed to fetch admins.",
+        error: error.message,
+      });
+    }
+  });
+
 
 export default router;
