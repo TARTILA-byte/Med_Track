@@ -23,7 +23,7 @@ function AllMedicines() {
       try {
         setLoading(true);
 
-        const response = await api.get("/medicines");
+        const response = await api.get("/medicines"); //
 
         setMedicines(response.data);
       } catch (err) {

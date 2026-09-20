@@ -26,7 +26,7 @@ const checkToken = (req, res, next) => {
         error: "Invalid or expired token",
       });
     }
-
+    console.log("JWT USER:", user);
     req.user = user;
     next();
   });
