@@ -35,13 +35,7 @@ function AdminLayout() {
             Add Drug Reference
           </NavLink>
           <Link to="/drug-info">Drug Catalog</Link>
-          <button
-            type="button"
-            className="admin-logout-link"
-            onClick={handleLogout}
-          >
-            Log Out
-          </button>
+
         </nav>
       </header>
 
