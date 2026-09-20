@@ -14,31 +14,32 @@ const Login = () => {
 
 
 
-const handleLogin = async (e) => {
-  e.preventDefault();
+  const handleLogin = async (e) => {
+    e.preventDefault();
 
-  setLoading(true);
-  setError("");
+    setLoading(true);
+    setError("");
 
-  const email = emailRef.current.value;
-  const password = passwordRef.current.value;
+    const email = emailRef.current.value;
+    const password = passwordRef.current.value;
 
-  try {
-    const response = await api.post("/login", { email, password });
+    try {
+      const response = await api.post("/login", { email, password });
 
-    if (response.status === 200) {
-      localStorage.setItem("token", response.data.token);
-      navigate("/all-medicines", { replace: true });
+      if (response.status === 200) {
+        localStorage.setItem("token", response.data.token);
+        localStorage.setItem("user", JSON.stringify(response.data.user));
+        navigate("/all-medicines", { replace: true });
+      }
+    } catch (err) {
+      console.error("Login Error:", err);
+      setError(
+        err.response?.data?.message || err.message || "Login failed!"
+      );
+    } finally {
+      setLoading(false);
     }
-  } catch (err) {
-    console.error("Login Error:", err);
-    setError(
-      err.response?.data?.message || err.message || "Login failed!"
-    );
-  } finally {
-    setLoading(false);
-  }
-}; 
+  };
 
   return (
     <div className="login-container">

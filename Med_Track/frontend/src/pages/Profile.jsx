@@ -6,15 +6,25 @@ import api from "../api/api";
 function Profile() {
   const navigate = useNavigate();
 
-  const [user] = useState({
-    name: "Alex Morgan",
-    email: "alex.morgan@example.com",
-    accountType: "Patient account",
+  const [user] = useState(() => {
+    const saved = localStorage.getItem("user");
+    if (saved) {
+      try {
+        const parsed = JSON.parse(saved);
+        return {
+          name: parsed.name || "User",
+          email: parsed.email || "user@example.com",
+          accountType: "Patient account",
+          gender: parsed.gender || "Not specified",
+          age: parsed.age || "--",
+          weight: parsed.weight || "--",
+          bloodType: parsed.bloodType || "--",
+        };
+      } catch (e) {
+        console.error("Error parsing user data", e);
+      }
+    }
 
-    gender: "Female",
-    age: 42,
-    weight: 68,
-    bloodType: "O positive",
   });
 
   const [careTeam] = useState({
@@ -103,17 +113,6 @@ function Profile() {
         </div>
 
         <div className="profile-sidebar">
-          <div className="care-team-card">
-            <span className="card-label">CARE TEAM</span>
-            <h4>{careTeam.name}</h4>
-            <p>{careTeam.role}</p>
-            <div className="section-divider" />
-            <div className="last-updated-row">
-              <span>Last updated</span>
-              <span>{careTeam.lastUpdated}</span>
-            </div>
-          </div>
-
           <div className="privacy-card">
             <h4>Your information stays private</h4>
             <p>MedTrack uses these details only to support your medication record and reminders.</p>
