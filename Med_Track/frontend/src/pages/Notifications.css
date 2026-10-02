@@ -18,23 +18,33 @@
 }
 
 .notification-card {
-  padding: 30px 25px;
+  padding: 20px 25px;
   border-radius: 8px;
   
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
+  transition: all 0.2s ease-in-out;
 }
 
 
 .notification-card.unread {
   background-color: #f0fdf4;
   border: 1px solid #bbf7d0;
+ 
+  cursor: pointer;
+}
+.notification-card.unread:hover {
+  background-color: #dc26260a;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  transform: translateY(-1px);
 }
 
 .notification-card.read {
   background-color: #fff;
   border: 1px solid #e5e7eb;
+  opacity: 0.75; 
+  cursor: default;
 }
 
 .notification-item-title {

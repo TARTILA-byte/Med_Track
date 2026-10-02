@@ -12,7 +12,7 @@ import checkToken from "./middlewares/checkToken.js";
 import drugInfoRoutes from "./routes/drugInfo.js";
 import adminRoutes from "./routes/adminRoutes.js";
 import notificationRoutes from "./routes/notification.js";
-
+import { startReminderCheck } from "./controllers/reminderScheduler.js";
 import dashboardRoutes from "./routes/dashboardRouter.js";
 if (!process.env.MONGO_URI) {
   console.error("CRITICAL ERROR: MONGO_URI is missing in your .env file!");
@@ -34,7 +34,7 @@ app.use(
   cors({
     origin: true,
     credentials: true,
-    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    methods: ["GET", "POST", "PUT", "PATCH","DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"],
   }),
 );
@@ -205,4 +205,5 @@ app.use("/api/dashboard", dashboardRoutes);
 // Start server
 app.listen(PORT, () => {
   console.log(`Server listening on port ${PORT}`);
+  startReminderCheck();
 });
