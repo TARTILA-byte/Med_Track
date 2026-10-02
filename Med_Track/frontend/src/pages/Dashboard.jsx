@@ -1,63 +1,154 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
-import "./Dashboard.css"; 
+import React, { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import api from "../api/api";
+import "./Dashboard.css";
 
-const Dashboard = () => {
+function Dashboard() {
+  const [data, setData] = useState({
+    totalMedicines: 0,
+    todayTotal: 0,
+    todayMedicines: [],
+  });
+  const [takenList, setTakenList] = useState({});
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
+
   const navigate = useNavigate();
+
+  useEffect(() => {
+    fetchDashboardData();
+  }, []);
+
+  const fetchDashboardData = async () => {
+    try {
+      setLoading(true);
+      const response = await api.get("/dashboard");
+      setData(response.data);
+    } catch (err) {
+      console.error("Dashboard Load Error:", err);
+      setError("Failed to load dashboard statistics.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleMarkAsTaken = (id) => {
+    setTakenList((prev) => ({ ...prev, [id]: true }));
+  };
 
   const handleNotification = () => {
     navigate("/notifications");
   };
 
-  const recentMedicines = [
-    { name: "Napa Extra", dose: "500mg", time: "Morning - Night", status: "Active" },
-    { name: "Seclo", dose: "20mg", time: "Before Meal", status: "Active" },
-    { name: "Ceevit", dose: "250mg", time: "Noon", status: "Completed" },
-  ];
+  const takenCount = Object.keys(takenList).length;
+  const pendingCount = Math.max(0, data.todayTotal - takenCount);
+
+  if (loading)
+    return (
+      <div className="page">
+        <p>Loading Dashboard...</p>
+      </div>
+    );
+  if (error)
+    return (
+      <div className="page">
+        <p className="error-message">{error}</p>
+      </div>
+    );
 
   return (
-    <div className="dashboard-container">
-      <div className="dashboard-header">
-        <h1 className="dashboard-title">Welcome to Dashboard</h1>
-        <button onClick={handleNotification} className="notification-btn">
-          Notifications 
+    <div className="page dashboard-container">
+      {/* Header section with Welcome Banner & Notification Icon */}
+      <div className="welcome-banner">
+        <div>
+          <h2>Welcome back! 👋</h2>
+          <p>Keep track of your medicines and stay healthy every day.</p>
+        </div>
+
+        {/* Notification Button */}
+        <button
+          className="notification-btn"
+          onClick={handleNotification}
+          title="View Notifications"
+        >
+          🔔 <span className="notification-badge"></span>
         </button>
       </div>
 
-      {/* Schedule Table */}
-      <div className="schedule-card">
-        <h3 className="schedule-title">Today's Medicine Schedule</h3>
-        <table className="schedule-table">
-          <thead>
-            <tr>
-              <th>Medicine</th>
-              <th>Dosage</th>
-              <th>Time</th>
-              <th>Status</th>
-            </tr>
-          </thead>
-          <tbody>
-            {recentMedicines.map((med, index) => (
-              <tr key={index}>
-                <td className="med-name">{med.name}</td>
-                <td className="med-info">{med.dose}</td>
-                <td className="med-info">{med.time}</td>
-                <td>
-                  <span
-                    className={`status-badge ${
-                      med.status === "Active" ? "active" : "completed"
-                    }`}
+      {/* Summary Cards */}
+      <div className="stats-grid">
+        <div className="stat-card blue">
+          <h3>{data.todayTotal}</h3>
+          <p>Today's Total Doses</p>
+        </div>
+        <div className="stat-card green">
+          <h3>{takenCount}</h3>
+          <p>Taken</p>
+        </div>
+        <div className="stat-card yellow">
+          <h3>{pendingCount}</h3>
+          <p>Pending</p>
+        </div>
+        <div className="stat-card purple">
+          <h3>{data.totalMedicines}</h3>
+          <p>Total Medicines Enrolled</p>
+        </div>
+      </div>
+
+      {/* Main Content */}
+      <div className="dashboard-content-grid">
+        {/* Today's Schedule */}
+        <div className="section-card schedule-section">
+          <div className="section-header">
+            <h3>Today's Schedule</h3>
+            <Link to="/all-medicines" className="add-btn-link">
+              + Add New
+            </Link>
+          </div>
+
+          {data.todayMedicines.length === 0 ? (
+            <p className="empty-text">No medicines scheduled for today.</p>
+          ) : (
+            <div className="schedule-list">
+              {data.todayMedicines.map((med) => {
+                const isTaken = !!takenList[med._id];
+                return (
+                  <div
+                    key={med._id}
+                    className={`schedule-item ${isTaken ? "completed" : ""}`}
                   >
-                    {med.status}
-                  </span>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+                    <div className="time-badge">
+                      ⏰ {med.time || "12:00 PM"}
+                    </div>
+                    <div className="med-info">
+                      <h4>
+                        {med.name} ({med.dosage})
+                      </h4>
+                      <p>
+                        {med.frequency} • {med.foodTiming || "After Food"}
+                      </p>
+                    </div>
+                    <div className="action-area">
+                      {isTaken ? (
+                        <span className="taken-badge">Taken ✅</span>
+                      ) : (
+                        <button
+                          className="take-btn"
+                          onClick={() => handleMarkAsTaken(med._id)}
+                        >
+                          Mark as Taken
+                        </button>
+                      )}
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );
-};
+}
 
 export default Dashboard;

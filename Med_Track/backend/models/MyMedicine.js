@@ -4,7 +4,7 @@ const myMedicineSchema = new mongoose.Schema(
   {
     userId: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "Users",
+      ref: "User", // আপনার User Model এর নাম অনুযায়ী (User বা Users)
       required: true,
     },
 
