@@ -2,34 +2,40 @@ import React, { useState } from "react";
 import "./AddMedicine.css";
 import api from "../api/api";
 
+const today = new Date();
+
+const currentDate =
+  today.getFullYear() +
+  "-" +
+  String(today.getMonth() + 1).padStart(2, "0") +
+  "-" +
+  String(today.getDate()).padStart(2, "0");
+
+const currentTime =
+  String(today.getHours()).padStart(2, "0") +
+  ":" +
+  String(today.getMinutes()).padStart(2, "0");
+
 const AddMedicine = () => {
   const [formData, setFormData] = useState({
     name: "",
     category: "",
     dosage: "",
     frequency: "",
-    time: "",
-    today: "",
-    startDate: "",
+    time: currentTime,
+    today: currentDate,
+    startDate: currentDate,
     endDate: "",
     quantity: "",
     foodTiming: "",
   });
-
   const [saving, setSaving] = useState(false);
-
   const handleChange = (e) => {
     const { name, value } = e.target;
-
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
+    setFormData({ ...formData, [name]: value });
   };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     if (
       !formData.name ||
       !formData.category ||
@@ -37,32 +43,26 @@ const AddMedicine = () => {
       !formData.frequency
     ) {
       alert("Please fill in Medicine Name, Category, Dosage and Frequency.");
-
       return;
     }
-
     try {
       setSaving(true);
-
       await api.post("/my-medicines", formData);
-
       alert("Medicine saved successfully!");
-
       setFormData({
         name: "",
         category: "",
         dosage: "",
         frequency: "",
-        time: "",
-        today: "",
-        startDate: "",
+        time: getCurrentTime(),
+        today: getToday(),
+        startDate: getToday(),
         endDate: "",
         quantity: "",
         foodTiming: "",
       });
     } catch (error) {
       console.error("Save Medicine Error:", error);
-
       if (error.response?.data?.message) {
         alert(error.response.data.message);
       } else {
@@ -72,127 +72,109 @@ const AddMedicine = () => {
       setSaving(false);
     }
   };
-
   return (
     <div className="page">
+      {" "}
       <div className="form-container">
-        <h1>Add Medicine Schedule</h1>
-
-        <p className="form-subtitle">Set your medicine schedule</p>
-
+        {" "}
+        <h1>Add Medicine Schedule</h1>{" "}
+        <p className="form-subtitle"> Set your medicine schedule </p>{" "}
         <form className="medicine-form" onSubmit={handleSubmit}>
-          <label>Medicine Name</label>
-
+          {" "}
+          <label>Medicine Name</label>{" "}
           <input
             type="text"
             name="name"
             placeholder="Medicine Name"
             value={formData.name}
             onChange={handleChange}
-          />
-
-          <label>Category</label>
-
+          />{" "}
+          <label>Category</label>{" "}
           <input
             type="text"
             name="category"
             placeholder="Category"
             value={formData.category}
             onChange={handleChange}
-          />
-
-          <label>Dosage</label>
-
+          />{" "}
+          <label>Dosage</label>{" "}
           <input
             type="text"
             name="dosage"
             placeholder="Example: 500 mg"
             value={formData.dosage}
             onChange={handleChange}
-          />
-
-          <label>Frequency</label>
-
+          />{" "}
+          <label>Frequency</label>{" "}
           <select
             name="frequency"
             value={formData.frequency}
             onChange={handleChange}
           >
-            <option value="">Select Frequency</option>
-            <option value="Once a day">Once a day</option>
-            <option value="Twice a day">Twice a day</option>
-            <option value="Three times a day">Three times a day</option>
-            <option value="Every 6 hours">Every 6 hours</option>
-            <option value="As needed">As needed</option>
-          </select>
-
-          <label>Time</label>
-
+            {" "}
+            <option value="">Select Frequency</option>{" "}
+            <option value="Once a day">Once a day</option>{" "}
+            <option value="Twice a day">Twice a day</option>{" "}
+            <option value="Three times a day"> Three times a day </option>{" "}
+            <option value="Every 6 hours">Every 6 hours</option>{" "}
+            <option value="As needed">As needed</option>{" "}
+          </select>{" "}
+          <label>Time</label>{" "}
           <input
             type="time"
             name="time"
             value={formData.time}
             onChange={handleChange}
-          />
-
-          <label>Today</label>
-
+          />{" "}
+          <label>Today</label>{" "}
           <input
             type="date"
             name="today"
             value={formData.today}
             onChange={handleChange}
-          />
-
-          <label>Start Date</label>
-
+          />{" "}
+          <label>Start Date</label>{" "}
           <input
             type="date"
             name="startDate"
             value={formData.startDate}
             onChange={handleChange}
-          />
-
-          <label>End Date</label>
-
+          />{" "}
+          <label>End Date</label>{" "}
           <input
             type="date"
             name="endDate"
             value={formData.endDate}
             onChange={handleChange}
-          />
-
-          <label>Quantity</label>
-
+          />{" "}
+          <label>Quantity</label>{" "}
           <input
             type="number"
             name="quantity"
             placeholder="Example: 10"
             value={formData.quantity}
             onChange={handleChange}
-          />
-
-          <label>Food Timing</label>
-
+          />{" "}
+          <label>Food Timing</label>{" "}
           <select
             name="foodTiming"
             value={formData.foodTiming}
             onChange={handleChange}
           >
-            <option value="">Select</option>
-            <option value="Before Food">Before Food</option>
-            <option value="After Food">After Food</option>
-            <option value="With Food">With Food</option>
-            <option value="Anytime">Anytime</option>
-          </select>
-
+            {" "}
+            <option value="">Select</option>{" "}
+            <option value="Before Food">Before Food</option>{" "}
+            <option value="After Food">After Food</option>{" "}
+            <option value="With Food">With Food</option>{" "}
+            <option value="Anytime">Anytime</option>{" "}
+          </select>{" "}
           <button type="submit" className="save-button" disabled={saving}>
-            {saving ? "Saving..." : "Save Medicine"}
-          </button>
-        </form>
-      </div>
+            {" "}
+            {saving ? "Saving..." : "Save Medicine"}{" "}
+          </button>{" "}
+        </form>{" "}
+      </div>{" "}
     </div>
   );
 };
-
 export default AddMedicine;

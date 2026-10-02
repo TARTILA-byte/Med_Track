@@ -11,8 +11,12 @@ import registerRoutes from "./routes/register.js";
 import checkToken from "./middlewares/checkToken.js";
 import drugInfoRoutes from "./routes/drugInfo.js";
 import adminRoutes from "./routes/adminRoutes.js";
+<<<<<<< HEAD
 import notificationRoutes from "./routes/notification.js";
 
+=======
+import dashboardRoutes from "./routes/dashboardRouter.js";
+>>>>>>> f2baf04b9d0e10278bee45eb2a1a3dd26eef3272
 if (!process.env.MONGO_URI) {
   console.error("CRITICAL ERROR: MONGO_URI is missing in your .env file!");
   process.exit(1);
@@ -23,13 +27,14 @@ const app = express();
 const PORT = 4000;
 
 app.use((req, res, next) => {
-  console.log(`[${new Date().toISOString()}] ${req.method} ${req.url} - Origin: ${req.headers.origin}`);
+  console.log(
+    `[${new Date().toISOString()}] ${req.method} ${req.url} - Origin: ${req.headers.origin}`,
+  );
   next();
 });
 
 app.use(
   cors({
-
     origin: true,
     credentials: true,
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
@@ -199,7 +204,7 @@ app.delete("/api/my-medicines/:id", checkToken, async (req, res) => {
     });
   }
 });
-
+app.use("/api/dashboard", dashboardRoutes);
 // Start server
 app.listen(PORT, () => {
   console.log(`Server listening on port ${PORT}`);

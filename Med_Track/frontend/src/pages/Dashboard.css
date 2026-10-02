@@ -1,94 +1,231 @@
-
 .dashboard-container {
-  padding: 30px;
-  max-width: 1000px;
+  padding: 24px;
+  max-width: 1200px;
   margin: 0 auto;
 }
 
-.dashboard-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.welcome-banner {
+  background: linear-gradient(135deg, #1e293b, #0f172a);
+  color: #ffffff;
+  padding: 24px;
+  border-radius: 12px;
+  margin-bottom: 24px;
+}
+
+.welcome-banner h2 {
+  margin: 0 0 8px 0;
+}
+
+.welcome-banner p {
+  margin: 0;
+  color: #94a3b8;
+}
+
+/* Stats Cards */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.stat-card {
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  border-left: 5px solid #cbd5e1;
+}
+
+.stat-card h3 {
+  font-size: 2rem;
+  margin: 0 0 4px 0;
+}
+
+.stat-card p {
+  margin: 0;
+  color: #64748b;
+  font-size: 0.9rem;
+}
+
+.stat-card.blue {
+  border-color: #3b82f6;
+}
+.stat-card.green {
+  border-color: #10b981;
+}
+.stat-card.yellow {
+  border-color: #f59e0b;
+}
+.stat-card.purple {
+  border-color: #8b5cf6;
+}
+
+/* Main Section Layout */
+.dashboard-content-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 24px;
+}
+
+@media (max-width: 768px) {
+  .dashboard-content-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.section-card {
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
   margin-bottom: 20px;
 }
 
-.dashboard-title {
-  font-size: 30px;
-  color: black;
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.section-header h3 {
   margin: 0;
 }
 
-.notification-btn {
-  background-color: green ;
+.add-btn-link {
+  color: #10b981;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+/* Schedule List */
+.schedule-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.schedule-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.schedule-item.completed {
+  background-color: #f0fdf4;
+  border-color: #bbf7d0;
+}
+
+.time-badge {
+  background: #f1f5f9;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.med-info h4 {
+  margin: 0 0 4px 0;
+}
+
+.med-info p {
+  margin: 0;
+  font-size: 0.85rem;
+  color: #64748b;
+}
+
+.take-btn {
+  background-color: #10b981;
   color: white;
   border: none;
-  padding:  18px;
+  padding: 8px 14px;
   border-radius: 6px;
-  font-size: 24px;
-  font-weight: bold;
   cursor: pointer;
-  transition: background-color 0.2s;
+}
+
+.taken-badge {
+  color: #166534;
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+
+/* Sidebar Alerts & Shortcuts */
+.alert-card h3 {
+  color: #dc2626;
+  margin-top: 0;
+}
+
+.alert-list {
+  padding-left: 20px;
+  margin: 0;
+  color: #991b1b;
+}
+
+.alert-list li {
+  margin-bottom: 8px;
+}
+
+.shortcut-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.shortcut-btn {
+  display: block;
+  text-align: center;
+  background-color: #0f172a;
+  color: white;
+  padding: 10px;
+  border-radius: 6px;
+  text-decoration: none;
+}
+
+.shortcut-btn.secondary {
+  background-color: #e2e8f0;
+  color: #0f172a;
+}
+
+.empty-text {
+  color: #94a3b8;
+  font-size: 0.9rem;
+}
+.welcome-banner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.notification-btn {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  padding: 10px 14px;
+  border-radius: 50%;
+  font-size: 1.2rem;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.2s ease-in-out;
 }
 
 .notification-btn:hover {
-  background-color: rgb(1, 104, 1) ;
+  background: #f1f5f9;
+  transform: scale(1.05);
 }
 
-.schedule-card {
-  background: #fff;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-}
-
-.schedule-title {
-  margin-top: 0;
-  font-size: 24px;
-  color: black ;
-}
-
-.schedule-table {
-  font-size: 20px;
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 15px;
-}
-
-.schedule-table th {
-  padding: 10px;
-  border-bottom: 2px solid #eee;
-  text-align: left;
-}
-
-.schedule-table td {
-  padding: 10px;
-  border-bottom: 1px solid #eee;
-}
-
-.med-name {
+.notification-badge {
+  position: absolute;
+  top: -2px;
+  right: -2px;
+  background-color: #ef4444;
+  color: white;
+  font-size: 0.75rem;
   font-weight: bold;
-  font-size: 17px;
-}
-
-.med-info {
-  font-size: 16px;
-  color: #555;
-}
-
-
-.status-badge {
-  padding: 4px 8px;
-  border-radius: 4px;
-  font-size: 15px;
-  font-weight: bold;
-}
-
-.status-badge.active {
-  color: #065f46;
-  background-color: #d1fae5;
-}
-
-.status-badge.completed {
-  color: #374151;
-  background-color: #e5e7eb;
+  padding: 2px 6px;
+  border-radius: 50%;
 }
