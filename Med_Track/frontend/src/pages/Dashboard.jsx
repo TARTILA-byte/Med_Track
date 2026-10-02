@@ -9,7 +9,13 @@ function Dashboard() {
     todayTotal: 0,
     todayMedicines: [],
   });
-  const [takenList, setTakenList] = useState({});
+
+  // 🔴 ১. LocalStorage থেকে প্রাথমিক ডাটা নেওয়া (যাতে পেজ রিফ্রেশ বা লগআউটেও না মোছে)
+  const [takenList, setTakenList] = useState(() => {
+    const savedTaken = localStorage.getItem("takenMedicines");
+    return savedTaken ? JSON.parse(savedTaken) : {};
+  });
+
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
@@ -32,8 +38,13 @@ function Dashboard() {
     }
   };
 
+  // 🔴 ২. Mark as Taken বাটনে ক্লিক করলে LocalStorage-এ আপডেট করা
   const handleMarkAsTaken = (id) => {
-    setTakenList((prev) => ({ ...prev, [id]: true }));
+    setTakenList((prev) => {
+      const updatedList = { ...prev, [id]: true };
+      localStorage.setItem("takenMedicines", JSON.stringify(updatedList)); // LocalStorage-এ সেভ
+      return updatedList;
+    });
   };
 
   const handleNotification = () => {
