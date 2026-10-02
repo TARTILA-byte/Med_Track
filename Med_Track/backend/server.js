@@ -11,6 +11,7 @@ import registerRoutes from "./routes/register.js";
 import checkToken from "./middlewares/checkToken.js";
 import drugInfoRoutes from "./routes/drugInfo.js";
 import adminRoutes from "./routes/adminRoutes.js";
+import notificationRoutes from "./routes/notification.js";
 
 if (!process.env.MONGO_URI) {
   console.error("CRITICAL ERROR: MONGO_URI is missing in your .env file!");
@@ -53,6 +54,7 @@ app.use("/api/login", loginRoutes);
 app.use("/api/register", registerRoutes);
 app.use("/api/druginfo", drugInfoRoutes);
 app.use("/api/admin", adminRoutes);
+app.use("/api/notifications", notificationRoutes);
 // Home
 app.get("/", (req, res) => {
   res.status(200).json({
