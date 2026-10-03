@@ -21,7 +21,7 @@ import AddMedicine from "./pages/AddMedicine";
 
 import DrugInfo from "./pages/DrugInfo";
 import Profile from "./pages/Profile";
-
+import CarbonFootprintDisplay from "./components/CarbonFootprintDisplay";
 
 // --- Admin Pages ---
 import AdminLayout from "./components/AdminLayout";
@@ -45,6 +45,7 @@ function Layout() {
 function App() {
   return (
     <BrowserRouter>
+      <CarbonFootprintDisplay/>
       <Routes>
         {/* Public Routes */}
         <Route path="/" element={<Login />} />
@@ -79,14 +80,7 @@ function App() {
 
         {/* Fallback Route */}
         <Route path="*" element={<Navigate to="/" replace />} />
-
-
-
-
-
-
-
-
+        
 
       </Routes>
     </BrowserRouter>

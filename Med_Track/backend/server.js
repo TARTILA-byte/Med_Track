@@ -4,6 +4,8 @@ import { users, addUser } from "./data.js";
 import mongoose from "mongoose";
 import cors from "cors";
 import cookieParser from "cookie-parser";
+import { co2 } from "@tgwf/co2";
+
 import Medicine from "./models/Medicine.js";
 import MyMedicine from "./models/MyMedicine.js";
 import loginRoutes from "./routes/loginRouter.js";
@@ -14,13 +16,14 @@ import adminRoutes from "./routes/adminRoutes.js";
 import notificationRoutes from "./routes/notification.js";
 import { startReminderCheck } from "./controllers/reminderScheduler.js";
 import dashboardRoutes from "./routes/dashboardRouter.js";
+
+const co2Emission = new co2({ model: "swd" });
 if (!process.env.MONGO_URI) {
   console.error("CRITICAL ERROR: MONGO_URI is missing in your .env file!");
   process.exit(1);
 }
 
 const app = express();
-
 const PORT = 4000;
 
 app.use((req, res, next) => {
@@ -41,6 +44,54 @@ app.use(
 
 app.use(express.json());
 app.use(cookieParser());
+
+// CO2 / Carbon Footprint Calculation
+app.use((req, res, next) => {
+  let requestBytes = 0;
+  let responseBytes = 0;
+
+  // Calculate request size
+  if (req.body) {
+    requestBytes += Buffer.byteLength(JSON.stringify(req.body),"utf8");
+  }
+
+  if (req.query) {
+    requestBytes += Buffer.byteLength(JSON.stringify(req.query),"utf8");
+  }
+   if (req.headers) {
+        requestBytes += Buffer.byteLength(JSON.stringify(req.headers),'utf8' );
+    }
+  // Override res.write
+  const originalWrite = res.write;
+  const originalEnd = res.end;
+
+  res.write = function (chunk) {
+    if (chunk) {
+      responseBytes += Buffer.byteLength(chunk, 'utf8');
+    }
+
+    originalWrite.apply(res, arguments);
+  };
+
+  // Override res.end
+  res.end = function (chunk) {
+    if (chunk) {
+      responseBytes += Buffer.byteLength(chunk, 'utf8');
+    }
+
+    res.locals.totalBytes = requestBytes + responseBytes;
+    const greenHost = false; // Set to true if your server is hosted on a green host
+
+    const emissions = co2Emission.perByte(res.locals.totalBytes,greenHost);
+
+    console.log(`Data transferred: ${res.locals.totalBytes} bytes`);
+    console.log(`Estimated CO2 emissions: ${emissions.toFixed(3)} grams`);
+
+    originalEnd.apply(res, arguments);
+  };
+
+  next();
+});
 // MongoDB Connection
 mongoose
   .connect(process.env.MONGO_URI)
