@@ -38,13 +38,78 @@ function Dashboard() {
     }
   };
 
-  // 🔴 ২. Mark as Taken বাটনে ক্লিক করলে LocalStorage-এ আপডেট করা
-  const handleMarkAsTaken = (id) => {
+  // 🔴 ২. Mark as Taken বাটনে ক্লিক করলে LocalStorage-এ আপডেট করা এবং Dose History-তে পাঠানো
+  const handleMarkAsTaken = async (id) => {
     setTakenList((prev) => {
       const updatedList = { ...prev, [id]: true };
       localStorage.setItem("takenMedicines", JSON.stringify(updatedList)); // LocalStorage-এ সেভ
       return updatedList;
     });
+
+    try {
+      const med = data.todayMedicines.find((m) => m._id === id);
+      if (med) {
+        const now = new Date();
+        const dateKey = now.toISOString().split("T")[0];
+        const dateLabel = now.toLocaleDateString("en-US", {
+          weekday: "long",
+          month: "long",
+          day: "numeric",
+        });
+        const medNameWithDosage = med.dosage
+          ? `${med.name} ${med.dosage}`
+          : med.name;
+        const timeStr =
+          med.time ||
+          now.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
+
+        // ১. LocalStorage doseHistory তে সেভ করা
+        const savedHistory = JSON.parse(
+          localStorage.getItem("doseHistory") || "[]"
+        );
+        const alreadyExists = savedHistory.some(
+          (item) =>
+            (item.medicineId === med._id || item.name === medNameWithDosage) &&
+            item.date === dateKey &&
+            item.status === "taken"
+        );
+
+        if (!alreadyExists) {
+          const newEntry = {
+            id: `${med._id}-${Date.now()}`,
+            medicineId: med._id,
+            name: medNameWithDosage,
+            dosage: med.dosage || "",
+            time: timeStr,
+            status: "taken",
+            date: dateKey,
+            dateLabel: dateLabel,
+            takenAt: now.toISOString(),
+          };
+          localStorage.setItem(
+            "doseHistory",
+            JSON.stringify([newEntry, ...savedHistory])
+          );
+        }
+
+        // ২. Backend API তে সেভ করা
+        api
+          .post("/dose-history", {
+            medicineId: med._id,
+            medicineName: medNameWithDosage,
+            dosage: med.dosage || "",
+            time: timeStr,
+            status: "taken",
+            date: dateKey,
+            dateLabel: dateLabel,
+          })
+          .catch((err) => {
+            console.log("Dose history backend sync error:", err?.message);
+          });
+      }
+    } catch (err) {
+      console.error("Failed to record dose history:", err);
+    }
   };
 
   const handleNotification = () => {
