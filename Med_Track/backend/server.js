@@ -17,6 +17,8 @@ import notificationRoutes from "./routes/notification.js";
 import { startReminderCheck } from "./controllers/reminderScheduler.js";
 import dashboardRoutes from "./routes/dashboardRouter.js";
 import doseHistoryRoutes from "./routes/doseHistoryRouter.js";
+
+const co2Emission = new co2({ model: "swd" });
 if (!process.env.MONGO_URI) {
   console.error("CRITICAL ERROR: MONGO_URI is missing in your .env file!");
   process.exit(1);
