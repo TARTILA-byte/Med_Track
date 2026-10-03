@@ -16,8 +16,7 @@ import adminRoutes from "./routes/adminRoutes.js";
 import notificationRoutes from "./routes/notification.js";
 import { startReminderCheck } from "./controllers/reminderScheduler.js";
 import dashboardRoutes from "./routes/dashboardRouter.js";
-
-const co2Emission = new co2({ model: "swd" });
+import doseHistoryRoutes from "./routes/doseHistoryRouter.js";
 if (!process.env.MONGO_URI) {
   console.error("CRITICAL ERROR: MONGO_URI is missing in your .env file!");
   process.exit(1);
@@ -253,6 +252,8 @@ app.delete("/api/my-medicines/:id", checkToken, async (req, res) => {
   }
 });
 app.use("/api/dashboard", dashboardRoutes);
+app.use("/api/dose-history", doseHistoryRoutes);
+// Start server
 // Start server
 app.listen(PORT, () => {
   console.log(`Server listening on port ${PORT}`);
